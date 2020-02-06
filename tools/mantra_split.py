@@ -164,8 +164,7 @@ def split(service):
     if not isinstance(service, ast.Service):
         raise ValueError("Cannot split, not a Service object.")
 
-    mantra = loader.modules["MantraRev"]
-
+    mantra = loader.modules[filename]
     thrift_enums = {}
     thrift_structs = {}
     thrift_exceptions = {}
@@ -220,42 +219,23 @@ def split(service):
 
 if __name__ == "__main__":
     patch()
-    loader = Loader("MantraRev.thrift")
-    services = [
-        "AccountSupervisorService",
-        "AgeCheckService",
-        "AuthService",
-        "BotService",
-        "BuddyService",
-        "BuddyManagementService",
-        "CallService",
-        "ChannelService",
-        "ChannelApplicationProvidedService",
-        "ChatappService",
-        "LiffService",
-        "MessageService",
-        "ShopService",
-        "SnsAdapterService",
-        "SpotService",
-        "SquareService",
-        "PollService",
-        "TalkService",
-        "UniversalNotificationService",
-    ]
-    for service in services:
-        try:
-            os.mkdir(service)
-        except Exception:
-            pass
+    loader = Loader(sys.argv[1])
+    filename = os.path.splitext(os.path.basename(sys.argv[1]))[0]
+    for k, v in loader.modules[filename].items():
+        if isinstance(v, ast.Service):
+            try:
+                os.mkdir(k)
+            except Exception:
+                pass
 
-        split(loader.lookup(service))
+            split(v)
 
     types = [ast.Enum, ast.Struct, ast.Exception_]
     comparison = [e_global, s_global, x_global]
     common = {}
     for i in range(len(comparison)):
         available = [
-            k for k, v in loader.modules["MantraRev"].items() if isinstance(v, types[i])
+            k for k, v in loader.modules[filename].items() if isinstance(v, types[i])
         ]
         current = len(comparison[i])
         missing = []
