@@ -1,0 +1,6 @@
+*.apk
+
+source/
+venv/
+.venv/
+gen-*/
