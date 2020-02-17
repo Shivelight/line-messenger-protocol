@@ -15,12 +15,18 @@ struct LiffView {
   10: i32 progressBackgroundColor
 }
 
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
 struct LiffViewResponse {
   1: LiffView view
   2: string contextToken
   3: string accessToken
   4: string featureToken
   5: list<enums.LiffViewFeature> features
+  6: string channelId
+  7: string idToken
+  8: list<string> scopes
 }
 
 struct LiffNoneContext {
@@ -41,13 +47,38 @@ struct LiffContext {
   3: LiffSquareChatContext squareChat
 }
 
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
+struct LiffAdvertisingId {
+  1: string advertisingId
+  2: bool tracking
+}
+
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
+struct LiffDeviceSetting {
+  1: bool videoAutoPlayAllowed
+  2: LiffAdvertisingId advertisingId
+}
+
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
 struct LiffViewRequest {
   1: string liftId
   2: LiffContext context
+  3: string lang
+  4: LiffDeviceSetting deviceSetting
 }
 
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
 struct LiffErrorConsentRequired {
   1: string channelId
+  2: string consentUrl
 }
 
 struct LiffErrorPayload {

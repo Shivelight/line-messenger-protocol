@@ -1,8 +1,18 @@
 namespace py LineThrift.liff.enums
 
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
 enum LiffViewFeature {
   GEOLOCATION = 1
   ADVERTISING_ID = 2
+  BLUETOOTH_LE = 3
+  QR_CODE = 4
+  ADVERTISING_SDK = 5
+  ADD_TO_HOME = 6
+  SHARE_TARGET_MESSAGE = 7
+  VIDEO_AUTO_PLAY = 8
+  PROFILE_PLUS = 9
 }
 
 enum LiffErrorCode {
