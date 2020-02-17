@@ -6,12 +6,17 @@ enum UserAgeType {
   UNDEFINED = 3
 }
 
+/**
+ * Updated: 2020-02-17 (Android 10.1.1)
+ */
 enum CarrierCode {
   NOT_SPECIFIED = 0
   JP_DOCOMO = 1
   JP_AU = 2
   JP_SOFTBANK = 3
   JP_DOCOMO_LINE = 4
+  JP_SOFTBANK_LINE = 5
+  JP_AU_LINE = 6
   KR_SKT = 17
   KR_KT = 18
   KR_LGT = 19
