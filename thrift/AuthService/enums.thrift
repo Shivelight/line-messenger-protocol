@@ -113,6 +113,23 @@ enum AccountMigrationCheckType {
   SECURITY_CENTER = 2
 }
 
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+enum AuthKeyVersion {
+  UNKNOWN = 0
+  V1 = 1
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+enum AuthLoginVersion {
+  UNKNOWN = 0
+  V1 = 1
+  V2 = 2
+}
+
 enum SnsIdType {
   FACEBOOK = 1
   SINA = 2
@@ -276,3 +293,12 @@ enum ApplicationType {
   CLOVAFRIENDS_ALPHA = 483
 }
 
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+enum ResponseType {
+  UNKNOWN = 0
+  SUCCESS = 1
+  REQUIRE_SERVER_SIDE_EMAIL = 2
+  REQUIRE_CLIENT_SIDE_EMAIL = 3
+}

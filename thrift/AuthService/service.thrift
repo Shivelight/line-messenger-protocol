@@ -10,7 +10,21 @@ service AuthService {
     1: string verifier,
     2: binary deviceSecret) throws (1: exceptions.TalkException e)
 
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse confirmIdentifier(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
   string createAccountMigrationPincodeSession() throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.AuthKeyExchangeResponse exchangeKey(
+    2: string authSessionId,
+    3: structs.AuthKeyExchangeRequest authKeyExchangeRequest) throws (1: exceptions.TalkException e)
 
   structs.SnsIdUserStatus findSnsIdUserStatus(
     2: enums.SnsIdType snsIdType,
@@ -22,6 +36,13 @@ service AuthService {
   structs.AuthQrcode getAuthQrcode(
     2: bool keepLoggedIn,
     3: string systemName) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.RSAKey getAuthRSAKey(
+    2: string authSessionId,
+    3: enums.IdentityProvider IdentityProvider) throws (1: exceptions.TalkException e)
 
   structs.RSAKey getRSAKeyInfo(
     2: enums.IdentityProvider provider) throws (1: exceptions.TalkException e)
@@ -42,6 +63,12 @@ service AuthService {
     3: string phoneNumber,
     4: string countryCodeHint) throws (1: exceptions.TalkException e)
 
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  string openAuthSession(
+    2: structs.AuthSessionRequest authSessionRequest) throws (1: exceptions.TalkException e)
+
   structs.RegisterWithSnsIdResult registerWithSnsId(
     2: enums.SnsIdType snsIdType,
     3: string snsAccessToken,
@@ -57,6 +84,63 @@ service AuthService {
     3: binary encryptedKeyChain,
     4: binary hashKeyChain,
     5: enums.ErrorCode errorCode) throws (1: exceptions.TalkException e)
+
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse removeIdentifier(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse resendIdentifierConfirmation(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.AuthLoginResponse setClovaCredential(
+    2: string authSessionId,
+    3: structs.AuthLoginRequest authLoginRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse setIdentifier(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse setIdentifierAndPassword(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse setPassword(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse updateIdentifier(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
+
+  /**
+   * Updated: 2020-02-21 (Android 10.1.1)
+   */
+  structs.IdentityCredentialResponse updatePassword(
+    2: string authSessionId,
+    3: structs.IdentityCredentialRequest identityCredentialRequest) throws (1: exceptions.TalkException e)
 
   string verifyQrcode(
     2: string verifier,

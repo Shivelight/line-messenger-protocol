@@ -9,6 +9,47 @@ struct SnsIdUserStatus {
   4: enums.AccountMigrationCheckType accountMigrationCheckType
 }
 
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct AuthKeyExchangeRequest {
+  1: enums.AuthKeyVersion authKeyVersion
+  2: string publicKey
+  3: string nonce
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct AuthKeyExchangeResponse {
+  1: string publicKey
+  2: string nonce
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct AuthLoginRequest {
+  1: enums.AuthLoginVersion authLoginVersion
+  2: map<string, string> metaData
+  3: string cipherText
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct AuthLoginResponse {
+  1: map<string, string> metaData
+  2: string cipherText
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct AuthSessionRequest {
+  1: map<string, string> metaData
+}
+
 struct AuthQrcode {
   1: string qrcode
   2: string verifier
@@ -87,3 +128,32 @@ struct E2EEPublicKey {
   5: i64 createdTime
 }
 
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct IdentifierConfirmationRequest {
+  1: map<string, string> metaData
+  2: bool forceRegistration
+  3: string verificationCode
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct IdentityCredentialRequest {
+  1: map<string, string> metaData
+  2: enums.IdentityProvider identityProvider
+  3: string chiperKeyId
+  4: string cipherText
+  5: IdentifierConfirmationRequest confirmationRequest
+}
+
+/**
+ * Updated: 2020-02-21 (Android 10.1.1)
+ */
+struct IdentityCredentialResponse {
+  1: map<string, string> metaData
+  2: enums.ResponseType responseType
+  3: string confirmationVerifier
+  4: i64 timeoutInSeconds
+}
