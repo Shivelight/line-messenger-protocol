@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for service in thrift/*/service.thrift
+do
+    thrift -r --gen py $service
+done
