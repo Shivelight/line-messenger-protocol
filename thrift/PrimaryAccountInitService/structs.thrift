@@ -1,7 +1,7 @@
 include "enums.thrift"
 
-namespace py LineThrift.primaryaccountinitservice.structs
-namespace go LineThrift.primaryaccountinitservice.structs
+namespace py LineThrift.primaryaccountinit.structs
+namespace go LineThrift.primaryaccountinit.structs
 
 struct AccountIdentifier {
  1: enums.AccountIdentifierType type,

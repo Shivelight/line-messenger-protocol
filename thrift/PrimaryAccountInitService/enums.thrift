@@ -1,5 +1,5 @@
-namespace py LineThrift.primaryaccountinitservice.enums
-namespace go LineThrift.primaryaccountinitservice.enums
+namespace py LineThrift.primaryaccountinit.enums
+namespace go LineThrift.primaryaccountinit.enums
 
 enum AccountIdentifierType {
  UNKNOWN = 0,

@@ -1,8 +1,8 @@
 include "enums.thrift"
 include "structs.thrift"
 
-namespace py LineThrift.primaryaccountinitservice.exceptions
-namespace go LineThrift.primaryaccountinitservice.exceptions
+namespace py LineThrift.primaryaccountinit.exceptions
+namespace go LineThrift.primaryaccountinit.exceptions
 
 exception AuthException {
  1: enums.AuthErrorCode code,

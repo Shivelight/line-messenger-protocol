@@ -2,8 +2,8 @@ include "enums.thrift"
 include "structs.thrift"
 include "exceptions.thrift"
 
-namespace py LineThrift.primaryaccountinitservice
-namespace go LineThrift.primaryaccountinitservice
+namespace py LineThrift.primaryaccountinit
+namespace go LineThrift.primaryaccountinit
 
 service PrimaryAccountInitService {
  structs.ExchangeEncryptionKeyResponse exchangeEncryptionKey(
