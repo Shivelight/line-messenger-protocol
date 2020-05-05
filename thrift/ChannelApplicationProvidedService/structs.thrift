@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.channelapplicationprovided.structs
+namespace go LineThrift.channelapplicationprovided.structs
 
 struct Contact {
   1: string mid

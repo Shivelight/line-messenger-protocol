@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 
 namespace py LineThrift.talk.exceptions
+namespace go LineThrift.talk.exceptions
 
 exception TalkException {
   1: enums.ErrorCode code

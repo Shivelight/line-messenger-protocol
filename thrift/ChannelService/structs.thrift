@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.channel.structs
+namespace go LineThrift.channel.structs
 
 struct ChannelToken {
   1: string token

@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.chatapp.structs
+namespace go LineThrift.chatapp.structs
 
 struct Chatapp {
   1: string chatappId

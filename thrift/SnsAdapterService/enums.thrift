@@ -1,4 +1,5 @@
 namespace py LineThrift.snsadapter.enums
+namespace go LineThrift.snsadapter.enums
 
 enum SnsIdType {
   FACEBOOK = 1

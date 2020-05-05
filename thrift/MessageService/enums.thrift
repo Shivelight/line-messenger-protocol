@@ -1,4 +1,5 @@
 namespace py LineThrift.message.enums
+namespace go LineThrift.message.enums
 
 enum MessageOperationType {
   SEND_MESSAGE = 1

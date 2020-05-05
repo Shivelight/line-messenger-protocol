@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.snsadapter
+namespace go LineThrift.snsadapter
 
 service SnsAdapterService {
 

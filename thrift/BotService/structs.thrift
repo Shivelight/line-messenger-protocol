@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.bot.structs
+namespace go LineThrift.bot.structs
 
 struct BotUseInfo {
   1: bool botUseAgreementAccepted

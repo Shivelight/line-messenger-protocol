@@ -1,4 +1,5 @@
 namespace py LineThrift.poll.enums
+namespace go LineThrift.poll.enums
 
 enum OpType {
   END_OF_OPERATION = 0

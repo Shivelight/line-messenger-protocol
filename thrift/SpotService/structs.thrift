@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.spot.structs
+namespace go LineThrift.spot.structs
 
 struct SpotItem {
   2: string name

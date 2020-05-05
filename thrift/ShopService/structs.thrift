@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.shop.structs
+namespace go LineThrift.shop.structs
 
 struct PaymentReservation {
   1: string receiverMid

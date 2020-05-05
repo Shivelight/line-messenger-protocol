@@ -1,4 +1,5 @@
 namespace py LineThrift.buddymanagement.enums
+namespace go LineThrift.buddymanagement.enums
 
 enum ErrorCode {
   ILLEGAL_ARGUMENT = 0

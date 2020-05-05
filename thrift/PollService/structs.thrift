@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.poll.structs
+namespace go LineThrift.poll.structs
 
 struct Location {
   1: string title

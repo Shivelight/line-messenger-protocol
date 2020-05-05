@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.accountsupervisor.structs
+namespace go LineThrift.accountsupervisor.structs
 
 struct RSAKey {
   1: string keynm

@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.agecheck.structs
+namespace go LineThrift.agecheck.structs
 
 struct AgeCheckDocomoResult {
   1: string authUrl

@@ -1,4 +1,5 @@
 namespace py LineThrift.square.enums
+namespace go LineThrift.square.enums
 
 enum SquareMembershipState {
   JOIN_REQUESTED = 1

@@ -1,4 +1,5 @@
 namespace py LineThrift.auth.enums
+namespace go LineThrift.auth.enums
 
 enum ErrorCode {
   ILLEGAL_ARGUMENT = 0

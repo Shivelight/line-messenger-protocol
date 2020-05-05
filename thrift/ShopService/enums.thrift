@@ -1,4 +1,5 @@
 namespace py LineThrift.shop.enums
+namespace go LineThrift.shop.enums
 
 enum PaymentType {
   PAYMENT_APPLE = 1

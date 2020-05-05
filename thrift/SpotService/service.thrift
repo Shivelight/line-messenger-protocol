@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.spot
+namespace go LineThrift.spot
 
 service SpotService {
 

@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 
 namespace py LineThrift.chatapp.exceptions
+namespace go LineThrift.chatapp.exceptions
 
 exception ChatappException {
   1: enums.ChatappErrorCode code

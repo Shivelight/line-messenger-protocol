@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.message.structs
+namespace go LineThrift.message.structs
 
 struct Location {
   1: string title

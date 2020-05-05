@@ -1,4 +1,5 @@
 namespace py LineThrift.channelapplicationprovided.enums
+namespace go LineThrift.channelapplicationprovided.enums
 
 enum ErrorCode {
   ILLEGAL_ARGUMENT = 0

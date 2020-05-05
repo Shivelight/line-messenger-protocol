@@ -1,4 +1,5 @@
 namespace py LineThrift.buddy.enums
+namespace go LineThrift.buddy.enums
 
 enum BotType {
   RESERVED = 0

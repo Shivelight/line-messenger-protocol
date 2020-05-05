@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.auth
+namespace go LineThrift.auth
 
 service AuthService {
 

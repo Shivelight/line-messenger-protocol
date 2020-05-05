@@ -1,4 +1,5 @@
 namespace py LineThrift.liff.enums
+namespace go LineThrift.liff.enums
 
 /**
  * Updated: 2020-02-17 (Android 10.1.1)
