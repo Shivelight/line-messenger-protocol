@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 
 namespace py LineThrift.liff.exceptions
+namespace go LineThrift.liff.exceptions
 
 exception LiffException {
   1: enums.LiffErrorCode code

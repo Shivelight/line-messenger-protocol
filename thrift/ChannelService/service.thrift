@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.channel
+namespace go LineThrift.channel
 
 service ChannelService {
 

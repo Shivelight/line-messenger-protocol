@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.call.structs
+namespace go LineThrift.call.structs
 
 struct CallHost {
   1: string host

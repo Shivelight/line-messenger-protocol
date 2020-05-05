@@ -1,4 +1,5 @@
 namespace py LineThrift.call.enums
+namespace go LineThrift.call.enums
 
 enum MediaType {
   AUDIO = 1

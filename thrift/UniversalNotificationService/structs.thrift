@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.universalnotification.structs
+namespace go LineThrift.universalnotification.structs
 
 struct NotificationTarget {
   1: string applicationType

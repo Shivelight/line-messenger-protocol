@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.poll
+namespace go LineThrift.poll
 
 service PollService {
 

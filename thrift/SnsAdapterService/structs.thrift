@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.snsadapter.structs
+namespace go LineThrift.snsadapter.structs
 
 struct SnsFriend {
   1: string snsUserId

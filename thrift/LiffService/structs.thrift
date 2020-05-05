@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.liff.structs
+namespace go LineThrift.liff.structs
 
 struct LiffView {
   1: string type

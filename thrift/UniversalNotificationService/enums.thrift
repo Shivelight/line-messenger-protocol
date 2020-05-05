@@ -1,4 +1,5 @@
 namespace py LineThrift.universalnotification.enums
+namespace go LineThrift.universalnotification.enums
 
 enum UniversalNotificationServiceErrorCode {
   INTERNAL_ERROR = 0

@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.talk.structs
+namespace go LineThrift.talk.structs
 
 struct VerificationSessionData {
   1: string sessionId

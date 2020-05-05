@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.universalnotification
+namespace go LineThrift.universalnotification
 
 service UniversalNotificationService {
 

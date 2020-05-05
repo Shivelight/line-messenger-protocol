@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.buddymanagement.structs
+namespace go LineThrift.buddymanagement.structs
 
 struct SendBuddyMessageResult {
   1: string requestId

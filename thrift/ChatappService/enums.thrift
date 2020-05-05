@@ -1,4 +1,5 @@
 namespace py LineThrift.chatapp.enums
+namespace go LineThrift.chatapp.enums
 
 enum ChatType {
   PERSONAL = 1

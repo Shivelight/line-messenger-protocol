@@ -1,4 +1,5 @@
 namespace py LineThrift.talk.enums
+namespace go LineThrift.talk.enums
 
 enum ErrorCode {
   ILLEGAL_ARGUMENT = 0

@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.auth.structs
+namespace go LineThrift.auth.structs
 
 struct SnsIdUserStatus {
   1: bool userExisting

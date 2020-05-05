@@ -3,6 +3,7 @@ include "structs.thrift"
 include "exceptions.thrift"
 
 namespace py LineThrift.agecheck
+namespace go LineThrift.agecheck
 
 service AgeCheckService {
 

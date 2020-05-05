@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.buddy.structs
+namespace go LineThrift.buddy.structs
 
 struct BuddySearchResult {
   1: string mid

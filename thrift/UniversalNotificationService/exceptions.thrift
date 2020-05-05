@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 
 namespace py LineThrift.universalnotification.exceptions
+namespace go LineThrift.universalnotification.exceptions
 
 exception UniversalNotificationServiceException {
   1: enums.UniversalNotificationServiceErrorCode code

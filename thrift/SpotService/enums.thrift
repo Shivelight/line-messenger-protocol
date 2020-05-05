@@ -1,4 +1,5 @@
 namespace py LineThrift.spot.enums
+namespace go LineThrift.spot.enums
 
 enum SpotCategory {
   UNKNOWN = 0

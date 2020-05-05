@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 
 namespace py LineThrift.square.exceptions
+namespace go LineThrift.square.exceptions
 
 exception SquareException {
   1: enums.SquareErrorCode errorCode

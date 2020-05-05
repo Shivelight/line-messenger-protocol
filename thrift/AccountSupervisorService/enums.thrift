@@ -1,4 +1,5 @@
 namespace py LineThrift.accountsupervisor.enums
+namespace go LineThrift.accountsupervisor.enums
 
 enum ErrorCode {
   ILLEGAL_ARGUMENT = 0

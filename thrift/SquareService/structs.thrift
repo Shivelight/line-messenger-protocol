@@ -1,6 +1,7 @@
 include "enums.thrift"
 
 namespace py LineThrift.square.structs
+namespace go LineThrift.square.structs
 
 struct SquarePreference {
   1: i64 favoriteTimestamp
