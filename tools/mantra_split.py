@@ -2,6 +2,7 @@
 from collections import defaultdict
 import sys
 import os
+import json
 import pprint
 
 from ptsd import ast
@@ -9,6 +10,7 @@ from ptsd.loader import Loader
 
 in_struct = False
 
+export_dir = "./"
 
 def get_prefix(ttype):
     prefix = ""
@@ -127,12 +129,12 @@ x_global = defaultdict(int)
 def write(service, enums, structs, exceptions):
     # Strip "Service"
     namespace = service.name.value.lower()[:-7]
-    with open(f"{service.name}/enums.thrift", "w+") as fp:
+    with open(os.path.join(export_dir, f"{service.name}/enums.thrift"), "w+") as fp:
         fp.write(f'namespace py LineThrift.{namespace}.enums\n\n')
         for _, value in enums.items():
             fp.write(f"{value}\n")
 
-    with open(f"{service.name}/structs.thrift", "w+") as fp:
+    with open(os.path.join(export_dir, f"{service.name}/structs.thrift"), "w+") as fp:
         global in_struct
         in_struct = True
         fp.write('include "enums.thrift"\n\n')
@@ -141,7 +143,7 @@ def write(service, enums, structs, exceptions):
             fp.write(f"{value}\n")
         in_struct = False
 
-    with open(f"{service.name}/exceptions.thrift", "w+") as fp:
+    with open(os.path.join(export_dir, f"{service.name}/exceptions.thrift"), "w+") as fp:
         fp.write(
             'include "enums.thrift"\n'
             'include "structs.thrift"\n\n'
@@ -150,7 +152,7 @@ def write(service, enums, structs, exceptions):
         for _, value in exceptions.items():
             fp.write(f"{value}")
 
-    with open(f"{service.name}/service.thrift", "w+") as fp:
+    with open(os.path.join(export_dir, f"{service.name}/service.thrift"), "w+") as fp:
         fp.write(
             'include "enums.thrift"\n'
             'include "structs.thrift"\n'
@@ -159,6 +161,10 @@ def write(service, enums, structs, exceptions):
         fp.write(f'namespace py LineThrift.{namespace}\n\n')
         fp.write(f"{service}")
 
+def write_meta(service, enums, structs, exceptions):
+    o = {"_endpoint": "https://legy-jp.line.naver.jp/S5", "names": [function.name.value for function in service.functions]}
+    with open(os.path.join(export_dir, f"{service.name}/meta.json"), "w+") as fp:
+        json.dump(o, fp, indent=4)
 
 def split(service):
     if not isinstance(service, ast.Service):
@@ -214,17 +220,33 @@ def split(service):
             thrift_exceptions[ttype] = obj
             x_global[ttype] += 1
 
+    write_meta(service, thrift_enums, thrift_structs, thrift_exceptions)
     write(service, thrift_enums, thrift_structs, thrift_exceptions)
 
 
 if __name__ == "__main__":
     patch()
+    if len(sys.argv) < 2:
+        print("[!] Needed base .thrift source")
+        os._exit(2)
+    elif len(sys.argv) >= 3:
+        export_dir = sys.argv[2]
+        try:
+            os.mkdir(export_dir)
+        except Exception as e:
+            print(f"[!] Cannot create directory: {e}")
+            export_dir = "./exported"
+            try:
+                os.mkdir(export_dir)
+            except Exception:
+                pass
+    print(f"Export Directory: {export_dir}")
     loader = Loader(sys.argv[1])
     filename = os.path.splitext(os.path.basename(sys.argv[1]))[0]
     for k, v in loader.modules[filename].items():
         if isinstance(v, ast.Service):
             try:
-                os.mkdir(k)
+                os.mkdir(os.path.join(export_dir,k))
             except Exception:
                 pass
 
