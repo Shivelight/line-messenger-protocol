@@ -68,7 +68,7 @@ struct LiffDeviceSetting {
  * Updated: 2020-02-17 (Android 10.1.1)
  */
 struct LiffViewRequest {
-  1: string liftId
+  1: string liffId
   2: LiffContext context
   3: string lang
   4: LiffDeviceSetting deviceSetting
