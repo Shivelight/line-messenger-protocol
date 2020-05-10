@@ -1,4 +1,3 @@
-include "enums.thrift"
 include "structs.thrift"
 include "exceptions.thrift"
 

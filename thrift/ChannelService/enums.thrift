@@ -38,9 +38,3 @@ enum ChannelFeatureLicense {
   PROHIBIT_MINIMIZE_CHANNEL_BROWSER = 27
   ALLOW_IOS_WEBKIT = 28
 }
-
-enum PaymentType {
-  PAYMENT_APPLE = 1
-  PAYMENT_GOOGLE = 2
-}
-
