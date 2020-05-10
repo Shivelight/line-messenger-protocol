@@ -1,4 +1,3 @@
-include "enums.thrift"
 include "structs.thrift"
 include "../Common/enumsC.thrift"
 include "../Common/structsC.thrift"

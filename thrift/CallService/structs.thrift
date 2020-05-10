@@ -1,5 +1,4 @@
 include "enums.thrift"
-include "../Common/enumsC.thrift"
 include "../Common/structsC.thrift"
 
 namespace py LineThrift.call.structs
