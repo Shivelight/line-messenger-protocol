@@ -1,5 +1,3 @@
-include "enums.thrift"
-
 namespace py LineThrift.bot.structs
 namespace go LineThrift.bot.structs
 

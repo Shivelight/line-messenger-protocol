@@ -55,11 +55,11 @@ for rem in toRemove:
 
 for typeData in ["enum", "struct", "exception"]:
 	if typeData == "enum":
-		data = "namespace py LineThrift.common.enums\nnamespace go LineThrift.common.enums\n\n"
+		data = "namespace py LineThrift.common._enums\nnamespace go LineThrift.common._enums\n\n"
 	elif typeData == "struct":
-		data = "include \"enums.thrift\"\n\nnamespace py LineThrift.common.structs\nnamespace go LineThrift.common.structs\n\n"
+		data = "include \"_enums.thrift\"\n\nnamespace py LineThrift.common._structs\nnamespace go LineThrift.common._structs\n\n"
 	else:
-		data = "include \"enums.thrift\"\ninclude \"structs.thrift\"\n\nnamespace py LineThrift.common.exceptions\nnamespace go LineThrift.common.exceptions\n\n"
+		data = "include \"_enums.thrift\"\ninclude \"_structs.thrift\"\n\nnamespace py LineThrift.common._exceptions\nnamespace go LineThrift.common._exceptions\n\n"
 	for enumData in commonThriftData[typeData].items():
 		with open(enumData[1]["foundIn"][0], "r") as handle:
 			thriftData = handle.read()

@@ -1,16 +1,11 @@
-include "enums.thrift"
+include "../Common/_enums.thrift"
+include "../Common/_structs.thrift"
 
 namespace py LineThrift.snsadapter.structs
 namespace go LineThrift.snsadapter.structs
 
-struct SnsFriend {
-  1: string snsUserId
-  2: string snsUserName
-  3: enums.SnsIdType snsIdType
-}
-
 struct SnsFriends {
-  1: list<SnsFriend> snsFriends
+  1: list<_structs.SnsFriend> snsFriends
   2: bool hasMore
 }
 

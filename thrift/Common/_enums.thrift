@@ -1,5 +1,5 @@
-namespace py LineThrift.common.enums
-namespace go LineThrift.common.enums
+namespace py LineThrift.common._enums
+namespace go LineThrift.common._enums
 
 enum ErrorCode {
   ILLEGAL_ARGUMENT = 0

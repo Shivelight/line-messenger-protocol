@@ -59,53 +59,6 @@ enum SquareChatState {
   SUSPENDED = 2
 }
 
-enum MIDType {
-  USER = 0
-  ROOM = 1
-  GROUP = 2
-  SQUARE = 3
-  SQUARE_CHAT = 4
-  SQUARE_MEMBER = 5
-  BOT = 6
-}
-
-enum ContentType {
-  NONE = 0
-  IMAGE = 1
-  VIDEO = 2
-  AUDIO = 3
-  HTML = 4
-  PDF = 5
-  CALL = 6
-  STICKER = 7
-  PRESENCE = 8
-  GIFT = 9
-  GROUPBOARD = 10
-  APPLINK = 11
-  LINK = 12
-  CONTACT = 13
-  FILE = 14
-  LOCATION = 15
-  POSTNOTIFICATION = 16
-  RICH = 17
-  CHATEVENT = 18
-  MUSIC = 19
-  PAYMENT = 20
-  EXTIMAGE = 21
-}
-
-enum MessageRelationType {
-  FORWARD = 0
-  AUTO_REPLY = 1
-  SUBORDINATE = 2
-}
-
-enum ServiceCode {
-  UNKNOWN = 0
-  TALK = 1
-  SQUARE = 2
-}
-
 enum SquareChatMembershipState {
   JOINED = 1
   LEFT = 2

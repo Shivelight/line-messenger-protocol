@@ -1,4 +1,6 @@
 include "enums.thrift"
+include "../Common/_enums.thrift"
+include "../Common/_structs.thrift"
 
 namespace py LineThrift.square.structs
 namespace go LineThrift.square.structs
@@ -95,38 +97,9 @@ struct SquareChat {
   8: enums.SquareChatState state
 }
 
-struct Location {
-  1: string title
-  2: string address
-  3: double latitude
-  4: double longitude
-  5: string phone
-}
-
-struct Message {
-  1: string from_
-  2: string to
-  3: enums.MIDType toType
-  4: string id
-  5: i64 createdTime
-  6: i64 deliveredTime
-  10: string text
-  11: Location location
-  14: bool hasContent
-  15: enums.ContentType contentType
-  17: binary contentPreview
-  18: map<string, string> contentMetadata
-  19: i8 sessionId
-  20: list<binary> chunks
-  21: string relatedMessageId
-  22: enums.MessageRelationType messageRelationType
-  23: i32 readCount
-  24: enums.ServiceCode relatedMessageServiceCode
-}
-
 struct SquareMessage {
-  1: Message message
-  3: enums.MIDType fromType
+  1: _structs.Message message
+  3: _enums.MIDType fromType
   4: i64 squareMessageRevision
 }
 
