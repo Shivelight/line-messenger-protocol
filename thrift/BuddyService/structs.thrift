@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.buddy.structs
 namespace go LineThrift.buddy.structs
@@ -13,7 +13,7 @@ struct BuddySearchResult {
   5: string statusMessage
   6: bool businessAccount
   7: i32 iconType
-  8: _enums.BotType botType
+  8: enumsC.BotType botType
 }
 
 struct BuddyOnAirUrls {
@@ -53,6 +53,6 @@ struct BuddyList {
   1: string classification
   2: string displayName
   3: i32 totalBuddyCount
-  4: list<_structs.Contact> popularContacts
+  4: list<structsC.Contact> popularContacts
 }
 

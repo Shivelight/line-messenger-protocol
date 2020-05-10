@@ -1,5 +1,5 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
+include "../Common/enumsC.thrift"
 
 namespace py LineThrift.auth.structs
 namespace go LineThrift.auth.structs
@@ -8,7 +8,7 @@ struct SnsIdUserStatus {
   1: bool userExisting
   2: bool phoneNumberRegistered
   3: bool sameDevice
-  4: _enums.AccountMigrationCheckType accountMigrationCheckType
+  4: enumsC.AccountMigrationCheckType accountMigrationCheckType
 }
 
 /**
@@ -61,7 +61,7 @@ struct SecurityCenterResult {
 
 struct LoginRequest {
   1: enums.LoginType type
-  2: _enums.IdentityProvider provider
+  2: enumsC.IdentityProvider provider
   3: string identifier
   4: string password
   5: bool keepLoggedIn
@@ -92,7 +92,7 @@ struct IdentifierConfirmationRequest {
  */
 struct IdentityCredentialRequest {
   1: map<string, string> metaData
-  2: _enums.IdentityProvider provider
+  2: enumsC.IdentityProvider provider
   3: string chiperKeyId
   4: string cipherText
   5: IdentifierConfirmationRequest confirmationRequest

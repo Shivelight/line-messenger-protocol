@@ -1,19 +1,19 @@
-include "../Common/_structs.thrift"
-include "../Common/_exceptions.thrift"
+include "../Common/structsC.thrift"
+include "../Common/exceptionsC.thrift"
 
 namespace py LineThrift.poll
 namespace go LineThrift.poll
 
 service PollService {
 
-  list<_structs.Operation> fetchOperations(
+  list<structsC.Operation> fetchOperations(
     2: i64 localRev,
-    3: i32 count) throws (1: _exceptions.TalkException e)
+    3: i32 count) throws (1: exceptionsC.TalkException e)
 
-  list<_structs.Operation> fetchOps(
+  list<structsC.Operation> fetchOps(
     2: i64 localRev,
     3: i32 count,
     4: i64 globalRev,
-    5: i64 individualRev) throws (1: _exceptions.TalkException e, 2: _exceptions.ShouldSyncException s)
+    5: i64 individualRev) throws (1: exceptionsC.TalkException e, 2: exceptionsC.ShouldSyncException s)
 
 }

@@ -1,7 +1,7 @@
-include "_enums.thrift"
+include "enumsC.thrift"
 
-namespace py LineThrift.common._structs
-namespace go LineThrift.common._structs
+namespace py LineThrift.common.structsC
+namespace go LineThrift.common.structsC
 
 struct RSAKey {
   1: string keynm
@@ -18,12 +18,12 @@ struct AuthQrcode {
 
 struct VerificationSessionData {
   1: string sessionId
-  2: _enums.VerificationMethod method
+  2: enumsC.VerificationMethod method
   3: string callback
   4: string normalizedPhone
   5: string countryCode
   6: string nationalSignificantNumber
-  7: list<_enums.VerificationMethod> availableVerificationMethods
+  7: list<enumsC.VerificationMethod> availableVerificationMethods
   8: string callerIdMask
 }
 
@@ -32,7 +32,7 @@ struct LoginResult {
   2: string certificate
   3: string verifier
   4: string pinCode
-  5: _enums.LoginResultType type
+  5: enumsC.LoginResultType type
   6: i64 lastPrimaryBindTime
   7: string displayMessage
   8: VerificationSessionData sessionForSMSConfirm
@@ -43,9 +43,9 @@ struct DeviceInfo {
   2: string systemName
   3: string systemVersion
   4: string model
-  10: _enums.CarrierCode carrierCode
+  10: enumsC.CarrierCode carrierCode
   11: string carrierName
-  20: _enums.ApplicationType applicationType
+  20: enumsC.ApplicationType applicationType
 }
 
 struct E2EEPublicKey {
@@ -61,7 +61,7 @@ struct BuddyDetail {
   3: bool onAir
   4: bool businessAccount
   5: bool addable
-  6: set<_enums.ContentType> acceptableContentTypes
+  6: set<enumsC.ContentType> acceptableContentTypes
   7: bool capableMyhome
   8: bool freePhoneCallable
   9: string phoneNumberToDial
@@ -69,10 +69,10 @@ struct BuddyDetail {
   11: i32 channelId
   12: string channelProviderName
   13: i32 iconType
-  14: _enums.BotType botType
+  14: enumsC.BotType botType
   15: bool showRichMenu
   16: i64 richMenuRevision
-  17: _enums.BuddyOnAirLabel onAirLabel
+  17: enumsC.BuddyOnAirLabel onAirLabel
   27: i32 onAirVersion
   18: bool useTheme
   19: string themeId
@@ -102,30 +102,30 @@ struct Location {
 struct Message {
   1: string from_
   2: string to
-  3: _enums.MIDType toType
+  3: enumsC.MIDType toType
   4: string id
   5: i64 createdTime
   6: i64 deliveredTime
   10: string text
   11: Location location
   14: bool hasContent
-  15: _enums.ContentType contentType
+  15: enumsC.ContentType contentType
   17: binary contentPreview
   18: map<string, string> contentMetadata
   19: i8 sessionId
   20: list<binary> chunks
   21: string relatedMessageId
-  22: _enums.MessageRelationType messageRelationType
+  22: enumsC.MessageRelationType messageRelationType
   23: i32 readCount
-  24: _enums.ServiceCode relatedMessageServiceCode
+  24: enumsC.ServiceCode relatedMessageServiceCode
 }
 
 struct Contact {
   1: string mid
   2: i64 createdTime
-  10: _enums.ContactType type
-  11: _enums.ContactStatus status
-  21: _enums.ContactRelation relation
+  10: enumsC.ContactType type
+  11: enumsC.ContactStatus status
+  21: enumsC.ContactRelation relation
   22: string displayName
   23: string phoneticName
   24: string pictureStatus
@@ -141,7 +141,7 @@ struct Contact {
   36: i64 settings
   37: string picturePath
   38: string recommendParams
-  39: _enums.FriendRequestStatus friendRequestStatus
+  39: enumsC.FriendRequestStatus friendRequestStatus
   40: string musicProfile
   42: string videoProfile
 }
@@ -149,7 +149,7 @@ struct Contact {
 struct SpotItem {
   2: string name
   3: string phone
-  4: _enums.SpotCategory category
+  4: enumsC.SpotCategory category
   5: string mid
   6: string countryAreaCode
   10: bool freePhoneCallable
@@ -158,8 +158,8 @@ struct SpotItem {
 struct ContactTransition {
   1: string ownerMid
   2: string targetMid
-  3: _enums.ContactStatus previousStatus
-  4: _enums.ContactStatus resultStatus
+  3: enumsC.ContactStatus previousStatus
+  4: enumsC.ContactStatus resultStatus
 }
 
 struct Room {
@@ -192,7 +192,7 @@ struct CoinProductItem {
 struct CoinPayLoad {
   1: i32 payCoin
   2: i32 freeCoin
-  3: _enums.PayloadType type
+  3: enumsC.PayloadType type
   4: i32 rewardCoin
 }
 
@@ -229,24 +229,24 @@ struct CoinHistoryCondition {
   2: i32 size
   3: string language
   4: string eddt
-  5: _enums.PaymentType appStoreCode
+  5: enumsC.PaymentType appStoreCode
 }
 
 struct CompactContact {
   1: string mid
   2: i64 createdTime
   3: i64 modifiedTime
-  4: _enums.ContactStatus status
+  4: enumsC.ContactStatus status
   5: i64 settings
   6: string displayNameOverridden
 }
 
 struct ExtendedProfileBirthday {
   1: string year
-  2: _enums.PrivacyLevelType yearPrivacyLevelType
+  2: enumsC.PrivacyLevelType yearPrivacyLevelType
   3: bool yearEnabled
   5: string day
-  6: _enums.PrivacyLevelType dayPrivacyLevelType
+  6: enumsC.PrivacyLevelType dayPrivacyLevelType
   7: bool dayEnabled
 }
 
@@ -276,7 +276,7 @@ struct Group {
 }
 
 struct IdentityCredential {
-  1: _enums.IdentityProvider provider
+  1: enumsC.IdentityProvider provider
   2: string identifier
   3: string password
 }
@@ -284,7 +284,7 @@ struct IdentityCredential {
 struct MetaProfile {
   1: i64 createTime
   2: string regionCode
-  3: map<_enums.RegistrationType, string> identities
+  3: map<enumsC.RegistrationType, string> identities
 }
 
 struct SimpleChannelClient {
@@ -322,19 +322,19 @@ struct CoinPurchaseReservation {
   2: string country
   3: string currency
   4: string price
-  5: _enums.PaymentType appStoreCode
+  5: enumsC.PaymentType appStoreCode
   6: string language
-  7: _enums.PaymentPgType pgCode
+  7: enumsC.PaymentPgType pgCode
   8: string redirectUrl
 }
 
 struct Operation {
   1: i64 revision
   2: i64 createdTime
-  3: _enums.OpType type
+  3: enumsC.OpType type
   4: i32 reqSeq
   5: string checksum
-  7: _enums.OpStatus status
+  7: enumsC.OpStatus status
   10: string param1
   11: string param2
   12: string param3
@@ -343,13 +343,13 @@ struct Operation {
 
 struct SyncParamMid {
   1: string mid
-  2: _enums.Diff diff
+  2: enumsC.Diff diff
   3: i64 revision
 }
 
 struct SyncParamContact {
   1: SyncParamMid syncParamMid
-  2: _enums.ContactStatus contactStatus
+  2: enumsC.ContactStatus contactStatus
 }
 
 struct SyncRelations {
@@ -372,6 +372,6 @@ struct SyncScope {
 struct SnsFriend {
   1: string snsUserId
   2: string snsUserName
-  3: _enums.SnsIdType snsIdType
+  3: enumsC.SnsIdType snsIdType
 }
 

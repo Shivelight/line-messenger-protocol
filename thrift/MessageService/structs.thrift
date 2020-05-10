@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.message.structs
 namespace go LineThrift.message.structs
@@ -10,11 +10,11 @@ struct MessageOperation {
   2: i64 createdTime
   3: enums.MessageOperationType type
   4: i32 reqSeq
-  5: _enums.OpStatus status
+  5: enumsC.OpStatus status
   10: string param1
   11: string param2
   12: string param3
-  20: _structs.Message message
+  20: structsC.Message message
 }
 
 struct MessageOperations {

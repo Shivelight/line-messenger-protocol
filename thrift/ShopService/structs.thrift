@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.shop.structs
 namespace go LineThrift.shop.structs
@@ -12,7 +12,7 @@ struct PaymentReservation {
   4: string location
   5: string currency
   6: string price
-  7: _enums.PaymentType appStoreCode
+  7: enumsC.PaymentType appStoreCode
   8: string messageText
   9: i32 messageTemplate
   10: i64 packageId
@@ -44,7 +44,7 @@ struct Product {
   16: string price
   17: string currency
   18: string currencySymbol
-  19: _enums.PaymentType paymentType
+  19: enumsC.PaymentType paymentType
   20: i64 createDate
   21: bool ownFlag
   22: enums.ProductEventType eventType

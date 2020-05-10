@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.talk.structs
 namespace go LineThrift.talk.structs
@@ -60,14 +60,14 @@ struct TMessageBox {
   6: i64 unreadCount
   7: i64 lastModifiedTime
   8: i32 status
-  9: _enums.MIDType midType
-  10: list<_structs.Message> lastMessages
+  9: enumsC.MIDType midType
+  10: list<structsC.Message> lastMessages
 }
 
 struct TMessageBoxWrapUp {
   1: TMessageBox messageBox
   2: string name
-  3: list<_structs.Contact> contacts
+  3: list<structsC.Contact> contacts
   4: string pictureRevision
 }
 
@@ -94,8 +94,8 @@ struct MessageBoxV2MessageId {
 }
 
 struct ProximityMatchCandidateEntry {
-  1: _structs.Contact contact
-  11: _structs.BuddyDetail buddyDetail
+  1: structsC.Contact contact
+  11: structsC.BuddyDetail buddyDetail
 }
 
 struct ProximityMatchCandidateResult {
@@ -107,7 +107,7 @@ struct ProximityMatchCandidateResult {
 struct LoginSession {
   1: string tokenKey
   3: i64 expirationTime
-  11: _enums.ApplicationType applicationType
+  11: enumsC.ApplicationType applicationType
   12: string systemName
   22: string accessLocation
 }
@@ -134,9 +134,9 @@ struct Settings {
   28: bool privacyAgreeUsePaidCall
   29: bool privacyAllowFriendRequest
   30: string contactMyTicket
-  40: _enums.IdentityProvider provider
+  40: enumsC.IdentityProvider provider
   41: string identityIdentifier
-  42: map<_enums.SnsIdType, string> snsAccounts
+  42: map<enumsC.SnsIdType, string> snsAccounts
   43: bool phoneRegistration
   44: enums.EmailConfirmationStatus emailConfirmationStatus
   45: enums.AccountMigrationPincodeType accountMigrationPincodeType
@@ -195,8 +195,8 @@ struct WapInvitation {
 }
 
 struct E2EENegotiationResult {
-  1: set<_enums.ContentType> allowedTypes
-  2: _structs.E2EEPublicKey publicKey
+  1: set<enumsC.ContentType> allowedTypes
+  2: structsC.E2EEPublicKey publicKey
 }
 
 struct RegisterWithPhoneNumberResult {
@@ -213,7 +213,7 @@ struct ContactReportResult {
 struct ContactReport {
   1: string mid
   2: bool exists
-  3: _structs.Contact contact
+  3: structsC.Contact contact
 }
 
 struct EmailConfirmationSession {
@@ -230,7 +230,7 @@ struct EmailConfirmation {
 }
 
 struct CommitMessageResult {
-  1: _structs.Message message
+  1: structsC.Message message
   2: enums.CommitMessageResultCode code
   3: string reason
   4: i64 successCount
@@ -245,20 +245,20 @@ struct SIMInfo {
 }
 
 struct SnsFriendContactRegistration {
-  1: _structs.Contact contact
-  2: _enums.SnsIdType snsIdType
+  1: structsC.Contact contact
+  2: enumsC.SnsIdType snsIdType
   3: string snsUserId
 }
 
 struct SnsFriendModification {
   1: enums.ModificationType type
-  2: _structs.SnsFriend snsFriend
+  2: structsC.SnsFriend snsFriend
 }
 
 struct ContactRegistration {
-  1: _structs.Contact contact
+  1: structsC.Contact contact
   10: string luid
-  11: _enums.ContactType contactType
+  11: enumsC.ContactType contactType
   12: string contactKey
 }
 
@@ -274,13 +274,13 @@ struct ContactModification {
 
 struct UserAuthStatus {
   1: bool phoneNumberRegistered
-  2: list<_enums.SnsIdType> registeredSnsIdTypes
-  3: _enums.AccountMigrationCheckType accountMigrationCheckType
+  2: list<enumsC.SnsIdType> registeredSnsIdTypes
+  3: enumsC.AccountMigrationCheckType accountMigrationCheckType
 }
 
 struct PhoneVerificationResult {
   1: enums.VerificationResult verificationResult
-  2: _enums.AccountMigrationCheckType accountMigrationCheckType
+  2: enumsC.AccountMigrationCheckType accountMigrationCheckType
   3: bool recommendAddFriends
 }
 

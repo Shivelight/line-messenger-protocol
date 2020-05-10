@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.square.structs
 namespace go LineThrift.square.structs
@@ -98,8 +98,8 @@ struct SquareChat {
 }
 
 struct SquareMessage {
-  1: _structs.Message message
-  3: _enums.MIDType fromType
+  1: structsC.Message message
+  3: enumsC.MIDType fromType
   4: i64 squareMessageRevision
 }
 

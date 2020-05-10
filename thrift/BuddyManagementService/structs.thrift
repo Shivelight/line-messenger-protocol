@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.buddymanagement.structs
 namespace go LineThrift.buddymanagement.structs
@@ -56,9 +56,9 @@ struct UpdateBuddyProfileResult {
 }
 
 struct BuddyMessageRequest {
-  1: _enums.ContentType contentType
+  1: enumsC.ContentType contentType
   2: string text
-  3: _structs.Location location
+  3: structsC.Location location
   4: binary content
   5: map<string, string> contentMetadata
 }

@@ -1,6 +1,6 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.call.structs
 namespace go LineThrift.call.structs
@@ -53,7 +53,7 @@ struct PaidCallResponse {
   1: CallHost host
   2: PaidCallDialing dialing
   3: string token
-  4: list<_structs.SpotItem> spotItems
+  4: list<structsC.SpotItem> spotItems
 }
 
 struct GroupCall {

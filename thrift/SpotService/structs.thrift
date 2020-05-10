@@ -1,16 +1,16 @@
-include "../Common/_enums.thrift"
-include "../Common/_structs.thrift"
+include "../Common/enumsC.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.spot.structs
 namespace go LineThrift.spot.structs
 
 struct SpotPhoneNumberResponse {
-  1: list<_structs.SpotItem> spotItems
+  1: list<structsC.SpotItem> spotItems
 }
 
 struct SpotNearbyItem {
-  2: _structs.SpotItem spotItem
-  11: _structs.Location location
+  2: structsC.SpotItem spotItem
+  11: structsC.Location location
 }
 
 struct SpotNearbyResponse {

@@ -1,5 +1,5 @@
 include "enums.thrift"
-include "../Common/_enums.thrift"
+include "../Common/enumsC.thrift"
 
 namespace py LineThrift.channel.structs
 namespace go LineThrift.channel.structs
@@ -119,7 +119,7 @@ struct CoinUseReservationItem {
 struct CoinUseReservation {
   1: string channelId
   2: string shopOrderId
-  3: _enums.PaymentType appStoreCode
+  3: enumsC.PaymentType appStoreCode
   4: list<CoinUseReservationItem> items
   5: string country
 }
