@@ -20,6 +20,9 @@ service TalkService {
   structs.RejectChatInvitationResponse rejectChatInvitation(
     1: structs.RejectChatInvitationRequest request) throws (1: exceptionsC.TalkException e)
 
+  structs.GetChatResponse getChats(
+    1: structs.GetChatRequest request) throws (1: exceptionsC.TalkException e)
+
   structs.GetAllChatMidsResponse getAllChatMids(
     1: structs.GetAllChatMidsRequest request,
     2: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
@@ -57,14 +60,12 @@ service TalkService {
     1: structs.UpdateChatRequest request) throws (1: exceptionsC.TalkException e)
 
 
-
   structsC.ExtendedProfile getExtendedProfile(
     1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
 
   list<structsC.ChatEffectMeta> getChatEffectMetaList(
     1: set<enumsC.ChatEffectMetaCategory> categories) throws (1: exceptionsC.TalkException e)
-
 
 
 

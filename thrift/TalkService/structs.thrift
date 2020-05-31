@@ -28,6 +28,15 @@ struct RejectChatInvitationRequest {
 struct RejectChatInvitationResponse{
 }
 
+struct GetChatRequest {
+  1: list<string> chatMids
+  2: bool withMembers
+  3: bool withInvitees
+}
+struct GetChatResponse {
+  1: list<structsC.Chat> chats
+}
+
 struct GetAllChatMidsRequest {
   1: bool withMemberChats
   2: bool withInvitedChats
