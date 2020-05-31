@@ -4,6 +4,25 @@ include "../Common/enumsC.thrift"
 namespace py LineThrift.shop.structs
 namespace go LineThrift.shop.structs
 
+
+struct ProductSummaryForAutoSuggest {
+  1: string id
+  2: i64 version
+  3: string name
+  4: enums.StickerResourceType stickerResourceType
+  5: i64 suggestVersion
+}
+
+struct AutoSuggestionShowcaseRequest {
+  1: enums.ProductType productType
+  2: enums.SuggestionType suggestionType
+}
+struct AutoSuggestionShowcaseResponse {
+  1: list<ProductSummaryForAutoSuggest> productList
+  2: i64 totalSize
+}
+
+
 struct PaymentReservation {
   1: string receiverMid
   2: string productId

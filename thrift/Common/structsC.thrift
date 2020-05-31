@@ -3,6 +3,51 @@ include "enumsC.thrift"
 namespace py LineThrift.common.structsC
 namespace go LineThrift.common.structsC
 
+struct ChatEffectMetaContent {
+  1: string url
+  2: string checksum
+}
+
+struct ChatEffectMeta {
+  1: i64 contentId
+  2: enumsC.ChatEffectMetaCategory category
+  3: string name
+  4: ChatEffectMetaContent defaultContent
+  5: map<enumsC.ChatEffectMetaOptionalType, ChatEffectMetaContent> optionalContents
+  6: set<string> keywords
+  7: i64 beginTimeMillis
+  8: i64 endTimeMillis
+  9: i64 createdTimeMillis
+  10: i64 updatedTimeMillis
+}
+
+struct GroupExtra {
+  1: string creator
+  2: bool preventedJoinByTicket
+  3: string invitationTicket
+  4: map<string, i64> memberMids
+  5: map<string, i64> inviteeMids
+}
+struct PeerExtra {
+}
+struct ChatExtra {
+  1: GroupExtra groupExtra
+  2: PeerExtra peerExtra
+}
+
+struct Chat {
+  1: enumsC.ChatType type
+  2: string chatMid
+  3: i64 createdTime
+  4: bool notificationDisabled
+  5: i64 favoriteTimestamp
+  6: string chatName
+  7: string picturePath
+  8: GroupExtra extra
+}
+
+
+
 struct RSAKey {
   1: string keynm
   2: string nvalue
@@ -91,12 +136,27 @@ struct Ticket {
   21: i32 maxUseCount
 }
 
+struct ClientNetworkStatus {
+  1: enumsC.NetworkType networkType
+}
+
 struct Location {
   1: string title
   2: string address
   3: double latitude
   4: double longitude
   5: string phone
+}
+
+struct GeolocationAccuracy {
+  1: double radiusMeters
+  2: double radiusConfidence
+}
+
+struct Geolocation {
+  1: double longitude
+  2: double latitude
+  3: GeolocationAccuracy accuracy
 }
 
 struct Message {
@@ -118,6 +178,12 @@ struct Message {
   22: enumsC.MessageRelationType messageRelationType
   23: i32 readCount
   24: enumsC.ServiceCode relatedMessageServiceCode
+  25: enumsC.AppExtensionType appExtensionType
+}
+
+struct AvatarProfile {
+  1: string version
+  2: i64 updatedMillis
 }
 
 struct Contact {
@@ -144,6 +210,8 @@ struct Contact {
   39: enumsC.FriendRequestStatus friendRequestStatus
   40: string musicProfile
   42: string videoProfile
+  43: map<string, string> statusMessageContentMetadata
+  44: AvatarProfile avatarProfile
 }
 
 struct SpotItem {

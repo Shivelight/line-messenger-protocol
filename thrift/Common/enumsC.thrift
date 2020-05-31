@@ -108,6 +108,77 @@ enum ErrorCode {
   BANNED = 107
 }
 
+enum PrivacySharePersonalInfoToFriend {
+  NEVER_SHOW = 0
+  ONE_WAY = 1
+  MUTUAL = 2
+}
+
+enum PrivacyStatusMessageHistory {
+  NONE = 0
+  ALL = 1
+}
+
+enum PrivacyAllowProfileHistory {
+  OWNER = 0
+  FRIEND = 1
+}
+
+enum PrivacyAgeResult {
+  OVER = 1
+  UNDER = 2
+  UNDEFINED = 3
+}
+
+enum ChatEffectMetaOptionalType {
+  LOW = 0
+}
+
+enum ChatEffectMetaCategory {
+  BACKGROUND = 0
+  KEYWORD = 1
+}
+
+
+enum ChatAttribute {
+  NAME = 1
+  PICTURE_STATUS = 2
+  PREVENTED_JOIN_BY_TICKET = 4
+  NOTIFICATION_SETTING = 8
+  INVITATION_TICKET = 16
+  FAVORITE_TIMESTAMP = 32
+  CHAT_TYPE = 64
+}
+
+enum AppExtensionType {
+  SIRI = 1
+  GOOGLE_ASSISTANT = 2
+  OS_SHARE = 3
+}
+
+enum ChatType {
+  GROUP = 0
+  ROOM = 1
+  PEER = 2
+}
+
+enum SyncReason {
+  UNSPECIFIED = 0
+  UNKNOWN = 1
+  INITIALIZATION = 2
+  OPERATION = 3
+  FULL_SYNC = 4
+  AUTO_REPAIR = 5
+  MANUAL_REPAIR = 6
+  INTERNAL = 7
+}
+
+enum NetworkType {
+  UNKNOWN = 0
+  WIFI = 1
+  CELLULAR_NETWORK = 2
+}
+
 enum CarrierCode {
   NOT_SPECIFIED = 0
   JP_DOCOMO = 1
