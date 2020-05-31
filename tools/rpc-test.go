@@ -8,6 +8,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"flag"
+	"strings"
 	"strconv"
 	"sync"
 	"time"
@@ -33,6 +35,7 @@ var (
 	Resp        = ResultTest{"", "0", 0, map[string]string{}, map[string]string{}}
 	hdr         = map[string][]string{
 		"X-Line-Application": {"IOS\t8.2.4\tiOS\t10.2"},
+		//"X-Line-Application": {"ANDROID\t9.18.1\tAndroid OS\t6.0.1"},
 		"X-Line-Access":      {"abcjdedededd"},
 		"User-Agent":         {"LI/7.150 iPad6,3 10.2"},
 		"Accept":             {"application/x-thrift"},
@@ -60,10 +63,13 @@ func Requester(id int, ch chan string, done chan int) {
 	//fmt.Printf("Requester%d running...\n", id)
 	for {
 		job := <-ch
-		data := []byte{130, 33, 0, byte(len(job))}
+		//data := []byte{130, 33, 0, byte(len(job))}
+		data := []byte{130, 33, 1, byte(len(job))}
 		ex := []byte(job)
 		data = append(data, ex...)
-		data = append(data, byte(0))
+		//data = append(data, byte(0))
+		data = append(data, []byte{28, 40, 0, 21, 100, 0, 0}...)
+		//fmt.Printf("%+#v\n",data)
 		req, _ := http.NewRequest("POST", Dataset.ApiPath, bytes.NewReader(data))
 		req.Header = hdr
 		a := time.Now()
@@ -75,11 +81,12 @@ func Requester(id int, ch chan string, done chan int) {
 		readAll, err := ioutil.ReadAll(o.Body)
 		io.Copy(ioutil.Discard, o.Body)
 		o.Body.Close()
+		mx.Lock()
+		defer mx.Unlock()
 		if err != nil {
 			panic(err)
 		}
 		//fmt.Printf("%#+v %#+v\n", o, data)
-		mx.Lock()
 		if bytes.Contains(readAll, invalidMethodName) {
 			Resp.Response[job] = "(" + o.Proto + " " + o.Status + ") " + "invalid method name"
 		} else if bytes.Contains(readAll, authenticationFailed) {
@@ -97,26 +104,56 @@ func Requester(id int, ch chan string, done chan int) {
 			Resp.ApiPath = Dataset.ApiPath
 			done <- 1
 		}
-		mx.Unlock()
 	}
 }
 
 func main() {
-	filename := os.Args[1]
+	var (
+		filename string
+		url string
+		rpc_name string
+
+		mode string = "file"
+	)
+	flag.StringVar(&filename, "c", "", "Template json rpc request")
+	flag.StringVar(&url, "u", "", "Full HTTP url thrift tcompact endpoint")
+	flag.StringVar(&rpc_name, "rpc", "", "Thrift RPC method call")
+
+	flag.Parse()
+
 	fmt.Println("LINE Thrift 'Compact' Protocol Function testing")
 	fmt.Println("-----")
-	fmt.Printf("Opening [%s]...\n", filename)
 
-	file, err := os.Open(filename)
-	defer file.Close()
-	if os.IsNotExist(err) {
-		panic("File configuration is not exist.")
-	} else if err != nil {
-		panic(err)
+	if len(filename) > 0 {
+		fmt.Printf("Opening [%s]...\n", filename)
+		file, err := os.Open(filename)
+		defer file.Close()
+		if os.IsNotExist(err) {
+			panic("File configuration is not exist.")
+		} else if err != nil {
+			panic(err)
+		}
+		decoder := json.NewDecoder(file)
+		decoder.Decode(&Dataset)
+		mode = "file"
+		//fmt.Printf("%#+v\n", Dataset)
+	}else{
+		// check direct cli
+		if len(url) == 0 || len(rpc_name) == 0 {
+			fmt.Println("need -c or ( -u and -rpc )")
+			return
+		}
+		mode = "cli_args"
+		Dataset.ApiPath = url
+		splitted := strings.Split(rpc_name, ",")
+		names := []string{}
+		for _, name := range splitted {
+			names = append(names, strings.Trim(name, " !@#$%^&*()<>:;?/'\"{}[]|\\"))
+		}
+		Dataset.Name = names
 	}
-	decoder := json.NewDecoder(file)
-	decoder.Decode(&Dataset)
-	//fmt.Printf("%#+v\n", Dataset)
+
+
 
 	fmt.Printf("Endpoint %s\n", Dataset.ApiPath)
 	fmt.Printf("Testing... [%d] ", len(Dataset.Name))
@@ -140,18 +177,24 @@ func main() {
 	fmt.Printf("[%s]\n", doneTime)
 
 	Resp.Took = doneTime.String()
-
 	curMillis := time.Now().Unix()
 	Resp.Timestamp = curMillis
-	fx := "testing_api-" + strconv.FormatInt(curMillis, 10) + ".json"
-	file, err = os.Create(fx)
-	defer file.Close()
-	if err != nil && !os.IsExist(err) {
-		panic(err)
+	if mode == "file" {
+		fx := "testing_api-" + strconv.FormatInt(curMillis, 10) + ".json"
+		file, err := os.Create(fx)
+		defer file.Close()
+		if err != nil && !os.IsExist(err) {
+			panic(err)
+		}
+		encoder := json.NewEncoder(file)
+		encoder.SetIndent("", "\t")
+		encoder.Encode(Resp)
+		fmt.Printf("Saved on [%s]\n", fx)
+	}else{
+		// just print on terminal
+		encoder := json.NewEncoder(os.Stdout)
+		encoder.SetIndent("", "\t")
+		encoder.Encode(Resp)
 	}
-	encoder := json.NewEncoder(file)
-	encoder.SetIndent("", "\t")
-	encoder.Encode(Resp)
-	fmt.Printf("Saved on [%s]\n", fx)
-	fmt.Println("Done")
+	fmt.Println("Done.")
 }
