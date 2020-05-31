@@ -1,6 +1,11 @@
 namespace py LineThrift.talk.enums
 namespace go LineThrift.talk.enums
 
+enum CallFlowType {
+  NEW = 1;
+  PLANET = 2;
+}
+
 enum FeatureType {
   OBS_VIDEO = 1
   OBS_GENERAL = 2

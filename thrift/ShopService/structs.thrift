@@ -1,5 +1,5 @@
 include "enums.thrift"
-include "../Common/enumsC.thrift
+include "../Common/enumsC.thrift"
 
 namespace py LineThrift.shop.structs
 namespace go LineThrift.shop.structs

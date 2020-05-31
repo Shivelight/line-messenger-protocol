@@ -22,8 +22,10 @@ service TalkService {
     2: string sessionId,
     3: set<string> ids) throws (1: exceptionsC.TalkException e)
 
-  list<string> acquireCallRoute(
-    2: string to) throws (1: exceptionsC.TalkException e)
+  structs.CallRoute /*before: list<string>*/ acquireCallRoute(
+    1: string to,
+    2: string callType,
+    3: map<string,string> fromEnvInfo) throws (1: exceptionsC.TalkException e)
 
   string acquireCallTicket(
     2: string to) throws (1: exceptionsC.TalkException e)

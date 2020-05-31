@@ -5,6 +5,21 @@ include "../Common/structsC.thrift"
 namespace py LineThrift.talk.structs
 namespace go LineThrift.talk.structs
 
+struct CallRoute {
+  1: string fromToken
+  2: enums.CallFlowType CallFlowType
+  3: string voipAddress
+  4: i32 voipUdpPort
+  5: i32 voupTcpPort
+  6: string fromZone
+  7: string toZone
+  8: bool fakeCall
+  9: string ringbackTone
+  10: string toMid
+  11: string tunneling
+  12: string commParam
+}
+
 struct ChatRoomAnnouncementContents {
   1: i32 displayFields
   2: string text
