@@ -20,8 +20,8 @@ service TalkService {
   structs.RejectChatInvitationResponse rejectChatInvitation(
     1: structs.RejectChatInvitationRequest request) throws (1: exceptionsC.TalkException e)
 
-  structs.GetChatResponse getChats(
-    1: structs.GetChatRequest request) throws (1: exceptionsC.TalkException e)
+  structs.GetChatsResponse getChats(
+    1: structs.GetChatsRequest request) throws (1: exceptionsC.TalkException e)
 
   structs.GetAllChatMidsResponse getAllChatMids(
     1: structs.GetAllChatMidsRequest request,
