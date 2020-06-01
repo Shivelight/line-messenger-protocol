@@ -1,2 +1,2 @@
-namespace py LineThrift.userprovideddataservice
+namespace py LineThrift.userprovideddata.structs
 namespace go LineThrift.userprovideddataservice
