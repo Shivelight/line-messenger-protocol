@@ -1,4 +1,4 @@
-namespace py LineThrift.squarebotservice
+namespace py LineThrift.squarebot.enums
 namespace go LineThrift.squarebotservice
 
 enum BotErrorCode {
