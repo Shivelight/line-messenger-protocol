@@ -2,7 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 
 namespace py LineThrift.squarebot.exceptions
-namespace go LineThrift.squarebotservice
+namespace go LineThrift.squarebot.exceptions
 
 exception BotException {
   1: enums.BotErrorCode errorCode
