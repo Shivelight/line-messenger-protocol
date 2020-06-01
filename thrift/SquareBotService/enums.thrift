@@ -1,5 +1,5 @@
 namespace py LineThrift.squarebot.enums
-namespace go LineThrift.squarebotservice
+namespace go LineThrift.squarebot.enums
 
 enum BotErrorCode {
 	UNKNOWN = 0
