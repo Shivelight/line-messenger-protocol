@@ -1,4 +1,4 @@
-namespace py LineThrift.squarebotservice
+namespace py LineThrift.squarebot.structs
 namespace go LineThrift.squarebotservice
 
 struct SquareBot {
