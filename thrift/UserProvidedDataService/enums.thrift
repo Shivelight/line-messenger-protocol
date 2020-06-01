@@ -1,4 +1,4 @@
-namespace py LineThrift.userprovideddataservice
+namespace py LineThrift.userprovideddata.enums
 namespace go LineThrift.userprovideddataservice
 
 enum UserProvidedDataType {
