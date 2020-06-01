@@ -1,5 +1,5 @@
 namespace py LineThrift.userprovideddata.enums
-namespace go LineThrift.userprovideddataservice
+namespace go LineThrift.userprovideddata.enums
 
 enum UserProvidedDataType {
 	UNKNOWN = 0
