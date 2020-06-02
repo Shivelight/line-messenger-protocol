@@ -3,7 +3,7 @@
 <html><small>revision: 0</small></html>
 
 | Endpoint Name | Path | Service | Description |
-|--|--|--|
+|--|--|--|--|
 | Long Polling | /P4 | [TalkService](thrift/TalkService/) | Fetch TalkService event [long-polling](https://en.wikipedia.org/wiki/Push_technology#Long_polling) |
 | Normal Polling | /NP4 | [TalkService](thrift/TalkService/) | Fetch TalkService event not [long-polling](https://en.wikipedia.org/wiki/Push_technology#Long_polling) |
 | Cancel Long Polling | /CP4 | [TalkService](thrift/TalkService/) | _No description._ |
