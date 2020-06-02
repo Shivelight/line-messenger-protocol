@@ -1,4 +1,7 @@
 # LINE Messenger Protocol
+---
+
+[Endpoint](docs/endpoints.md)
 
 ## Hierarchy
 
