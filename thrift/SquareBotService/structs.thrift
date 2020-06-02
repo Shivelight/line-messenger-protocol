@@ -1,5 +1,5 @@
-namespace py LineThrift.squarebotservice
-namespace go LineThrift.squarebotservice
+namespace py LineThrift.squarebot.structs
+namespace go LineThrift.squarebot.structs
 
 struct SquareBot {
 	1: string botMid
