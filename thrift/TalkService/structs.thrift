@@ -5,6 +5,152 @@ include "../Common/structsC.thrift"
 namespace py LineThrift.talk.structs
 namespace go LineThrift.talk.structs
 
+struct ReissueChatTicketRequest {
+  1: i32 reqSeq
+  2: string groupMid
+}
+struct ReissueChatTicketResponse {
+  1: string ticketId
+}
+
+struct AcceptChatInvitationByTicketRequest {
+  1: i32 reqSeq
+  2: string chatMid
+  3: string ticketId
+}
+struct AcceptChatInvitationByTicketResponse {
+}
+
+struct RejectChatInvitationRequest {
+  1: i32 reqSeq
+  2: string chatMid
+}
+struct RejectChatInvitationResponse{
+}
+
+struct GetChatsRequest {
+  1: list<string> chatMids
+  2: bool withMembers
+  3: bool withInvitees
+}
+struct GetChatsResponse {
+  1: list<structsC.Chat> chats
+}
+
+struct GetAllChatMidsRequest {
+  1: bool withMemberChats
+  2: bool withInvitedChats
+}
+struct GetAllChatMidsResponse {
+  1: set<string> memberChatMids
+  2: set<string> invitedChatMids
+}
+
+struct AcceptChatInvitationRequest {
+  1: i32 reqSeq
+  2: string chatMid
+}
+struct AcceptChatInvitationResponse {
+}
+
+struct CreateChatRequest {
+  1: i32 reqSeq
+  2: enumsC.ChatType type
+  3: string name
+  4: set<string> targetUserMids
+  5: string picturePath
+}
+struct CreateChatResponse {
+  1: structsC.Chat chat
+}
+
+struct DeleteOtherFromChatRequest {
+  1: i32 reqSeq
+  2: string chatMid
+  3: set<string> targetUserMids
+}
+struct DeleteOtherFromChatResponse {
+}
+
+struct InviteIntoChatRequest {
+  1: i32 reqSeq
+  2: string chatMid
+  3: set<string> targetUserMids
+}
+struct InviteIntoChatResponse {}
+
+struct DeleteSelfFromChatRequest {
+  1: i32 reqSeq
+  2: string chatMid
+  3: i64 lastSeenMessageDeliveredTime
+  4: string lastSeenMessageId
+  5: i64 lastMessageDeliveredTime
+  6: string lastMessageId
+}
+struct DeleteSelfFromChatResponse {
+}
+
+struct FindChatByTicketRequest {
+  1: string ticketId
+}
+struct FindChatByTicketResponse {
+  1: structsC.Chat chat
+}
+
+struct CancelChatInvitationRequest {
+  1: i32 reqSeq
+  2: string chatMid
+  3: set<string> targetUserMids
+}
+struct CancelChatInvitationResponse {}
+
+struct MessageBoxListRequest {
+  1: string minChatId
+  2: string maxChatId
+  3: bool activeOnly
+  4: i32 messageBoxCountLimit
+  5: bool withUnreadCount
+  6: i32 lastMessagesPerMessageBoxCount
+  7: bool unreadOnly
+}
+struct ExtendedMessageBox {
+  1: string id
+  2: enumsC.MIDType midType
+  4: MessageBoxV2MessageId lastDeliveredMessageId
+  5: i64 lastSeenMessageId
+  6: i64 unreadCount
+  7: list<structsC.Message> lastMessages
+  8: i64 lastRemovedMessageId
+  9: i64 lastRemovedTime
+}
+struct MessageBoxList {
+  1: list<ExtendedMessageBox> messageBoxes
+  2: bool hasNext
+}
+
+struct UpdateChatRequest {
+  1: i32 reqSeq
+  2: structsC.Chat chat
+  3: enumsC.ChatAttribute updateAttribute
+}
+struct UpdateChatResponse {
+}
+
+struct CallRoute {
+  1: string fromToken
+  2: enums.CallFlowType CallFlowType
+  3: string voipAddress
+  4: i32 voipUdpPort
+  5: i32 voupTcpPort
+  6: string fromZone
+  7: string toZone
+  8: bool fakeCall
+  9: string ringbackTone
+  10: string toMid
+  11: string tunneling
+  12: string commParam
+}
+
 struct ChatRoomAnnouncementContents {
   1: i32 displayFields
   2: string text
@@ -33,11 +179,6 @@ struct Announcement {
 struct AnalyticsInfo {
   1: double gaSamplingRate
   2: string tmid
-}
-
-struct Geolocation {
-  1: double longitude
-  2: double latitude
 }
 
 struct FriendRequest {
@@ -123,12 +264,14 @@ struct Settings {
   17: string notificationSoundGroup
   18: bool notificationDisabledWithSub
   19: bool notificationPayment
+
   20: bool privacySyncContacts
   21: bool privacySearchByPhoneNumber
   22: bool privacySearchByUserid
   23: bool privacySearchByEmail
   24: bool privacyAllowSecondaryDeviceLogin
   25: bool privacyProfileImagePostToMyhome
+
   26: bool privacyReceiveMessagesFromNotFriend
   27: bool privacyAgreeUseLineCoinToPaidCall
   28: bool privacyAgreeUsePaidCall
@@ -151,6 +294,7 @@ struct Settings {
   65: bool privacyAllowNearby
   66: i64 agreementNearbyTime
   67: i64 agreementSquareTime
+
   68: bool notificationMention
   69: i64 botUseAgreementAcceptedAt
   70: i64 agreementShakeFunction
@@ -161,6 +305,21 @@ struct Settings {
   75: i64 agreementAdByWebAccess
   76: i64 agreementPhoneNumberMatching
   77: i64 agreementCommunicationInfo
+  78: enumsC.PrivacySharePersonalInfoToFriend privacySharePersonalInfoToFriends
+  79: i64 agreementThingsWirelessCommunication
+  80: i64 agreementGdpr
+  81: enumsC.PrivacyStatusMessageHistory privacyStatusMessageHistory
+  82: i64 agreementProvideLocation
+  83: i64 agreementBeacon
+
+  85: enumsC.PrivacyAllowProfileHistory privacyAllowProfileHistory
+  86: i64 agreementContentsSuggest
+  87: i64 agreementContentsSuggestDataCollection
+  88: enumsC.PrivacyAgeResult privacyAgeResult
+  89: bool privacyAgeResultReceived
+  90: i64 agreementOcrImageCollection
+  91: bool privacyAllowFollow
+  92: bool privacyShowFollowList
 }
 
 struct SuggestItemDictionaryRevision {

@@ -1,6 +1,12 @@
 namespace py LineThrift.call.enums
 namespace go LineThrift.call.enums
 
+enum CallType {
+  AUDIO = 1;
+  VIDEO = 2;
+  FACEPLAY = 3;
+}
+
 enum MediaType {
   AUDIO = 1
   VIDEO = 2
@@ -36,6 +42,11 @@ enum PersonalInfo {
   PHONE = 1
   BIRTHDAY = 2
   RAW_BIRTHDAY = 3
+}
+
+enum Protocol {
+  STANDARD = 1;
+  CONSTELLA = 2;
 }
 
 enum UserStatus {

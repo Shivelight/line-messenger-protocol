@@ -16,6 +16,16 @@ struct GroupCallRoute {
   3: CallHost mix
   4: string hostMid
   5: list<string> capabilities
+  6: enums.Protocol protocol
+  7: string voipAddress
+  8: i32 voipUdpPort
+  9: i32 voipTcpPort
+  10: string fromZone
+  11: string commParam
+  12: string polarisAddress
+  13: i32 polarisUdpPort
+  14: string polarisZone
+  15: string orionAddress
 }
 
 struct PaidCallCurrencyExchangeRate {
@@ -62,6 +72,7 @@ struct GroupCall {
   4: list<string> memberMids
   5: i64 started
   6: enums.MediaType mediaType
+  7: enums.Protocol protocol
 }
 
 struct PaidCallAdResult {

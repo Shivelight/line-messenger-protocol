@@ -8,7 +8,69 @@ namespace py LineThrift.talk
 namespace go LineThrift.talk
 
 service TalkService {
+  // update
+  // - getGroups
+  // - setNotificationsEnabled
+  structs.ReissueChatTicketResponse reissueChatTicket(
+    1: structs.ReissueChatTicketRequest request) throws (1: exceptionsC.TalkException e)
 
+  structs.AcceptChatInvitationByTicketResponse acceptChatInvitationByTicket(
+    1: structs.AcceptChatInvitationByTicketRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.RejectChatInvitationResponse rejectChatInvitation(
+    1: structs.RejectChatInvitationRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.GetChatsResponse getChats(
+    1: structs.GetChatsRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.GetAllChatMidsResponse getAllChatMids(
+    1: structs.GetAllChatMidsRequest request,
+    2: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
+
+  structs.AcceptChatInvitationResponse acceptChatInvitation(
+    1: structs.AcceptChatInvitationRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.CreateChatResponse createChat(
+    1: structs.CreateChatRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.DeleteOtherFromChatResponse deleteOtherFromChat(
+    1: structs.DeleteOtherFromChatRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.InviteIntoChatResponse inviteIntoChat(
+    1: structs.InviteIntoChatRequest request) throws (1: exceptionsC.TalkException e)
+
+
+  structs.DeleteSelfFromChatResponse deleteSelfFromChat(
+    1: structs.DeleteSelfFromChatRequest request) throws (1: exceptionsC.TalkException e)
+
+
+  structs.FindChatByTicketResponse findChatByTicket(
+    1: structs.FindChatByTicketRequest request) throws (1: exceptionsC.TalkException e)
+
+  structs.CancelChatInvitationResponse cancelChatInvitation(
+    1: structs.CancelChatInvitationRequest request) throws (1: exceptionsC.TalkException e)
+
+
+  structs.MessageBoxList getMessageBoxes(
+    2: structs.MessageBoxListRequest messageBoxListRequest
+    3: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
+
+
+  structs.UpdateChatResponse updateChat(
+    1: structs.UpdateChatRequest request) throws (1: exceptionsC.TalkException e)
+
+
+  structsC.ExtendedProfile getExtendedProfile(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
+
+
+  list<structsC.ChatEffectMeta> getChatEffectMetaList(
+    1: set<enumsC.ChatEffectMetaCategory> categories) throws (1: exceptionsC.TalkException e)
+
+
+
+
+  //
   void acceptGroupInvitation(
     1: i32 reqSeq,
     2: string groupId) throws (1: exceptionsC.TalkException e)
@@ -22,8 +84,10 @@ service TalkService {
     2: string sessionId,
     3: set<string> ids) throws (1: exceptionsC.TalkException e)
 
-  list<string> acquireCallRoute(
-    2: string to) throws (1: exceptionsC.TalkException e)
+  structs.CallRoute /*before: list<string>*/ acquireCallRoute(
+    1: string to,
+    2: string callType,
+    3: map<string,string> fromEnvInfo) throws (1: exceptionsC.TalkException e)
 
   string acquireCallTicket(
     2: string to) throws (1: exceptionsC.TalkException e)
@@ -210,7 +274,7 @@ service TalkService {
 
   list<string> getBuddyBlockerIds() throws (1: exceptionsC.TalkException e)
 
-  structs.Geolocation getBuddyLocation(
+  structsC.Geolocation getBuddyLocation(
     2: string mid,
     3: i32 index) throws (1: exceptionsC.TalkException e)
 
@@ -218,7 +282,8 @@ service TalkService {
     2: string chatRoomMid) throws (1: exceptionsC.TalkException e)
 
   map<string, list<structs.ChatRoomAnnouncement>> getChatRoomAnnouncementsBulk(
-    2: list<string> chatRoomMids) throws (1: exceptionsC.TalkException e)
+    2: list<string> chatRoomMids
+    3: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   list<structsC.CompactContact> getCompactContactsModifiedSince(
     2: i64 timestamp) throws (1: exceptionsC.TalkException e)
@@ -377,7 +442,8 @@ service TalkService {
 
   list<structs.LoginSession> getSessions() throws (1: exceptionsC.TalkException e)
 
-  structs.Settings getSettings() throws (1: exceptionsC.TalkException e)
+  structs.Settings getSettings(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   structs.Settings getSettingsAttributes(
     2: i32 attrBitset) throws (1: exceptionsC.TalkException e)
@@ -756,7 +822,7 @@ service TalkService {
   void setBuddyLocation(
     2: string mid,
     3: i32 index,
-    4: structs.Geolocation location) throws (1: exceptionsC.TalkException e)
+    4: structsC.Geolocation location) throws (1: exceptionsC.TalkException e)
 
   void setIdentityCredential(
     2: string identifier,

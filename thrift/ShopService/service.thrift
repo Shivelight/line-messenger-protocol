@@ -7,6 +7,8 @@ namespace py LineThrift.shop
 namespace go LineThrift.shop
 
 service ShopService {
+  structs.AutoSuggestionShowcaseResponse getAutoSuggestionShowcase(
+    2: structs.AutoSuggestionShowcaseRequest autoSuggestionShowcaseRequest) throws (1: exceptionsC.TalkException e)
 
   void buyCoinProduct(
     2: structs.PaymentReservation paymentReservation) throws (1: exceptionsC.TalkException e)

@@ -1,6 +1,16 @@
 namespace py LineThrift.shop.enums
 namespace go LineThrift.shop.enums
 
+enum ProductType {
+  STICKER = 1
+  THEME = 2
+  STICON = 3
+}
+
+enum SuggestionType {
+  // unknown
+}
+
 enum ProductBannerLinkType {
   BANNER_LINK_NONE = 0
   BANNER_LINK_ITEM = 1

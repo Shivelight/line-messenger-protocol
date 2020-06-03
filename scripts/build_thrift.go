@@ -101,6 +101,7 @@ thrift_builder_tool`)
 	fmt.Println("running build....")
 	for _, path := range candidate {
 		cmd := thriftCmd(path)
+		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		if err := cmd.Run(); err != nil {
 			fmt.Printf("working: %s .... failed :(\n", path)
