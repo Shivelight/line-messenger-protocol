@@ -167,7 +167,8 @@ struct Message {
   5: i64 createdTime
   6: i64 deliveredTime
   10: string text
-  11: Location location
+  // don't write struct if it's null (sidenote from Go thrift behaviour)
+  11: optional Location location
   14: bool hasContent
   15: enumsC.ContentType contentType
   17: binary contentPreview
