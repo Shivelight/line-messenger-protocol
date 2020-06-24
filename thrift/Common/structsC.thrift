@@ -3,6 +3,29 @@ include "enumsC.thrift"
 namespace py LineThrift.common.structsC
 namespace go LineThrift.common.structsC
 
+struct ChatRoomBGM {
+  1: string creatorMid
+  2: i64 createdTime
+  3: string chatRoomBGMInfo
+}
+
+struct InstantNews {
+  1: i64 newsId
+  2: string newsService
+  3: i64 ttlMillis
+  4: string category
+  5: string categoryBgColor
+  6: string categoryColor
+  7: string title
+  8: string url
+  9: string image
+}
+
+struct Configurations {
+  1: i64 revision
+  2: map<string, string> configMap
+}
+
 struct ChatEffectMetaContent {
   1: string url
   2: string checksum
@@ -31,8 +54,8 @@ struct GroupExtra {
 struct PeerExtra {
 }
 struct ChatExtra {
-  1: GroupExtra groupExtra
-  2: PeerExtra peerExtra
+  1: optional GroupExtra groupExtra
+  2: optional PeerExtra peerExtra
 }
 
 struct Chat {
@@ -43,7 +66,7 @@ struct Chat {
   5: i64 favoriteTimestamp
   6: string chatName
   7: string picturePath
-  8: GroupExtra extra
+  8: optional ChatExtra extra
 }
 
 
@@ -146,6 +169,9 @@ struct Location {
   3: double latitude
   4: double longitude
   5: string phone
+  6: string categoryId
+  7: enumsC.LocationProvider provider
+  8: GeolocationAccuracy accuracy
 }
 
 struct GeolocationAccuracy {

@@ -11,6 +11,31 @@ service TalkService {
   // update
   // - getGroups
   // - setNotificationsEnabled
+  // - getChats
+  // - getConfigurations
+  // - getInstantNews
+  // - updateChatRoomBGM
+  // - getChatRoomBGMs
+  map<string, structsC.ChatRoomBGM> getChatRoomBGMs(
+    2: set<string> chatRoomMids,
+    3: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
+
+  structsC.ChatRoomBGM updateChatRoomBGM(
+    1: i32 reqSeq,
+    2: string chatRoomMid,
+    3: string chatRoomBGMInfo) throws (1: exceptionsC.TalkException e)
+
+  list<structsC.InstantNews> getInstantNews(
+    1: string region,
+    2: structsC.Location location) throws (1: exceptionsC.TalkException e)
+  structsC.Configurations getConfigurations(
+    2: i64 revision,
+    3: string regionOfUsim,
+    4: string regionOfTelephone,
+    5: string regionOfLocale,
+    6: string carrier,
+    7: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
+
   structs.ReissueChatTicketResponse reissueChatTicket(
     1: structs.ReissueChatTicketRequest request) throws (1: exceptionsC.TalkException e)
 
@@ -411,7 +436,8 @@ service TalkService {
     3: structs.MessageBoxV2MessageId endMessageId,
     4: i32 messagesCount) throws (1: exceptionsC.TalkException e)
 
-  structsC.Profile getProfile() throws (1: exceptionsC.TalkException e)
+  structsC.Profile getProfile(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   structs.ProximityMatchCandidateResult getProximityMatchCandidateList(
     2: string sessionId) throws (1: exceptionsC.TalkException e)
@@ -437,6 +463,9 @@ service TalkService {
 
   structsC.Room getRoom(
     2: string roomId) throws (1: exceptionsC.TalkException e)
+
+  list<structsC.Room> getRoomsV2(
+    2: list<string> roomIds) throws (1: exceptionsC.TalkException e)
 
   i64 getServerTime() throws (1: exceptionsC.TalkException e)
 
