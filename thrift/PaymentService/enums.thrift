@@ -1,0 +1,353 @@
+namespace py LineThrift.payment.enums
+namespace go LineThrift.payment.enums
+
+enum RegistrationType {
+	NONE = 0
+	NORMAL = 1
+	LINECARD = 2
+	LINECARD_OPTIONAL = 3
+	WEB = 4
+	IPASS = 5
+}
+
+enum EligibleFriendStatusType {
+	AVAILABLE = 0
+	DIFFERENT_REGION = 1
+   	UNSUPPORTED_DEVICE = 2
+   	PHONE_NUMBER_UNREGISTERED = 3
+   	UNAVAILABLE_FROM_LINE_PAY = 4
+	INVALID_USER = 5
+}
+
+enum EligibleType {
+	TRANSFER = 1
+	TRANSFER_REQUEST = 2
+	DUTCH = 3
+	INVITATION = 4
+}
+
+enum WithdrawStaticMenuType {
+	UNSPECIFIED = 0
+	LV1 = 1
+	LV2 = 2
+	LV3 = 3
+	LV4 = 4
+	LV9 = 9
+}
+
+enum DepositMethodType {
+	BANK = 1
+	ATM = 2
+	CONVENIENCE_STORE = 3
+	DEBIT_CARD = 4
+	E_CHANNEL = 5
+	VIRTUAL_BANK_ACCOUNT = 6
+	AUTO = 7
+	CVS_LAWSON = 8
+	SEVEN_BANK_DEPOSIT = 9
+	CODE_DEPOSIT = 10
+}
+
+enum BalanceType {
+	NONE = 1
+	JP = 2
+	TW = 3
+	TH = 4
+	ID = 5
+}
+
+enum TransferRequestType {
+	DUTCH_FROM = 1
+	FROM = 2
+	DUTCH_TO = 3
+	TO = 4
+	MULTI_TO = 5
+	MULTI_FROM = 6
+}
+
+enum TransferStatusType {
+	READY = 1
+	COMPLETE = 2
+	REQUEST = 3
+	CANCEL = 4
+	FAIL = 5
+}
+
+enum LinePayExtendedFeatureType {
+	BALANCE_INQUIRY = 1
+}
+
+enum LinePayAccountStatus {
+	NULL = 0
+	ALIVE = 1
+	WAIT = 2
+	REMOVE = 3
+	IDENTIFICATION_REQUIRED = 4
+	IDENTIFICATION_WAIT = 5
+}
+
+enum LinePayAccountType {
+	UNKNOWN = 0
+   	LP = 1
+   	PAYMETHOD_CREDIT_CARD = 2
+   	PAYMETHOD_BANK_ACCOUNT = 3
+}
+
+enum AddressType {
+	NONE = 0
+	UNIQUE = 1
+	LIST = 2
+}
+
+enum TradeStatusType {
+	ALL = 7
+	READY = 1
+	COMPLETE = 2
+	WAIT = 3
+	CANCEL = 4
+	FAIL = 5
+	EXPIRE = 6
+}
+
+enum TradeRequestType {
+	NULL = 0
+	ATM = 1
+	CONVENIENCE_STORE = 2
+	ALL = 3
+}
+
+enum UnregisterInfoType {
+	OK = 1
+   	NOT_ALIVE_USER = 2
+   	NEED_BALANCE_DISCLAIMER = 3
+   	ECONTEXT_CHARGING_IN_PROGRESS = 4
+   	TRANSFER_IN_PROGRESS = 6
+   	OK_REMAINING_BALANCE = 7
+   	ADVERSE_BALANCE = 8
+   	CONFIRM_REQUIRED = 9
+}
+
+enum AccountType {
+	LINE = 1
+	LINEPAY = 2
+}
+
+enum RegionalInfoIdentificationType {
+	CITIZEN_ID = 1
+	PASSPORT = 2
+	WORK_PERMIT = 3
+	ALIEN_CARD = 4
+}
+
+enum JoinPathType {
+	UNKNOWN = 0
+	MORE_TAB = 1
+	CHAT_ROOM_PLUS_MENU = 2
+	TRANSFER = 3
+	PAYMENT = 4
+	LINECARD = 5
+	INVITATION = 6
+}
+
+enum SettingFeatureType {
+	IPASS = 1
+}
+
+enum MessageType {
+	AUTH_METHODS_SELECTION = 1
+	PASSWORD_SETTING = 2
+	LINE_POINT_PAYMENT_INFO = 3
+	PASSWORD_SETTING_AGAIN = 4
+   	PASSWORD = 5
+   	GENERAL = 6
+	PASSWORD_TEMPORARY = 7
+   	PASSWORD_MYCODE_AUTH = 8
+   	SIGNUP = 9
+   	CARD_LIST = 10
+   	MYCODE_POINT_INFO = 11
+   	COUPON_GUIDE = 12
+}
+
+enum CardBrandType {
+	UNKNOWN = 0
+	VISA = 1
+	MASTER = 2
+	AMEX = 3
+	DINERS = 4
+	JCB = 5
+}
+
+enum TosUrlType {
+	NONE = 0
+	ONE_TIME_PAYMENT_AGREEMENT = 1
+	SIMPLE_JOINING_AGREEMENT = 2
+    LINE_CARD_CASH_AGREEMENT = 3
+	LINE_CARD_MONEY_AGREEMENT = 4
+   	JOINING_WITH_LINE_CARD_AGREEMENT = 5
+	LINE_CARD_AGREEMENT = 6
+
+}
+
+enum UrlGroupType {
+	JOINING_AGREEMENT = 1
+	PAYMENT = 2
+	SETTING = 3
+	ACCOUNT_SETTING = 4
+	FINACE_GATEWAY = 5
+	JOINING_AGREEMENT_V2 = 6
+	IMAGE = 7
+	SETTING_MENU = 8
+}
+
+enum DisplayType {
+	UNKNOWN = 0
+	HORIZONTAL = 1
+	SQUARE = 2
+}
+
+enum LinkType {
+	BUILTIN = 1
+	CHANNEL = 2
+	APP = 3
+	WEB = 4
+}
+
+enum BadgeType {
+	NONE = 1
+	NEW = 2
+	HOT = 3
+	EVENT = 4
+}
+
+enum SettingMenuType {
+	DEPOSIT = 1
+	TRANSFER = 2
+	TRANSFER_REQUEST = 3
+	DUTCH = 4
+	BALANCE_TRX_LIST = 5
+	CREDITCARD_PAY_LIST = 6
+	CREDITCARD_REG = 7
+	SETTINGS = 8
+	CUSTOM = 100
+}
+
+enum MenuType {
+	MAIN = 1
+	MAIN_PLUS_BUTTON = 2
+}
+
+enum CachableSettingType {
+	MENUS = 1
+	URLS = 2
+	CARD_VALIDATION_RULES = 3
+	MESSAGES = 4
+	MYCODE_SHORTCUT = 5
+	INVOICE = 6
+	FEATURES = 7
+}
+
+enum ResolutionType {
+	SCALE2 = 1
+	SCALE3 = 2
+	HDPI = 3
+	XHDPI = 4
+}
+
+enum ChannelType {
+	NULL = 0
+	ATM = 1
+	CONVENIENCE_STORE = 2
+}
+
+enum OperationType {
+	CHARGE = 1
+	WITHDRAW = 2
+}
+
+enum AuthMethodType {
+	TTS = 1
+	BANK_DEPOSIT = 2
+	CREDIT_CARD = 3
+	BALANCE = 4
+	INDIVIDUAL_INFO = 5
+	REFERENCE_NO = 6
+	CITIZEN_ID = 7
+}
+
+enum AuthPasswordType {
+	PASSWORD = 1
+	CARRY_PASSWORD = 2
+}
+
+enum AccountProductCode {
+	PERSONAL_ACCOUNT = 1
+	CURRENT_ACCOUNT = 2
+}
+
+enum BankType {
+	BANK_ALL = 1
+	BANK_DEPOSIT = 2
+	BANK_WITHDRAWAL = 3
+}
+
+enum FlowType {
+	GENERAL = 1
+}
+
+enum SearchType {
+	MID = 1
+	REF_NO = 2
+	SVC_NO = 3
+}
+
+enum AuthType {
+	UNKNOWN = 0
+	NONE = 1
+	LP_PINCODE = 2
+	OTP = 3
+	IDPW = 4
+}
+
+enum TransactionType {
+	UNKNOWN = 0
+	PAYMENT = 1
+	PAYMENT_CANCEL = 2
+	PARTIAL_CANCEL = 3
+	TRANSFER = 4
+	TRANSFER_FAIL = 13
+	NOT_JOIN_TRANSFER = 11
+	NOT_JOIN_TRANSFER_COMPLETE = 12
+	NOT_JOIN_TRANSFER_REFUND = 9
+	DEPOSIT = 5
+	DEPOSIT_WAIT = 10
+	DEPOSIT_CANCEL = 14
+	WITHDRAW = 6
+	WITHDRAW_COMPLETE = 7
+	WITHDRAW_FAIL = 8
+}
+
+enum PayMethodType {
+	NULL = 0
+	BALANCE = 1
+	CREDIT_CARD = 2
+	POINT = 3
+	DEBIT_PAYMENT = 4
+}
+
+enum FeatureType {
+	UNKNOWN = 0
+	MAIN = 12
+	DEPOSIT = 1
+	DEPOSIT_BANK = 10
+	DEPOSIT_DEBIT = 11
+	DEPOSIT_ATM = 8
+	DEPOSIT_CONVENIENCE_STORE = 9
+	WITHDRAWAL = 2
+	TRANSFER = 3
+	PAYMENT = 4
+	TRANSFER_REQUEST = 5
+	DUTCH = 6
+	REMOVAL = 7
+	IDENTIFICATION = 13
+	CREDIT_CARD_REGISTRATION = 14 
+}
