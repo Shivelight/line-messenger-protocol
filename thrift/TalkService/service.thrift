@@ -8,6 +8,19 @@ namespace py LineThrift.talk
 namespace go LineThrift.talk
 
 service TalkService {
+  void follow(
+    2: structs.FollowRequest followRequest
+  ) throws (1: exceptionsC.TalkException e)
+  
+  void unfollow(
+    2: structs.UnfollowRequest unfollowRequest
+  ) throws (1: exceptionsC.TalkException e)
+  
+  structs.GetFollowersResponse getFollowers(
+    2: structs.FollowRequest getFollowersRequest
+  ) throws (1: exceptionsC.TalkException e)
+
+
   // update
   // - getGroups
   // - setNotificationsEnabled

@@ -5,6 +5,35 @@ include "../Common/structsC.thrift"
 namespace py LineThrift.talk.structs
 namespace go LineThrift.talk.structs
 
+struct GetFollowersResponse {
+  1: list<FollowProfile> profiles
+  2: string cursor
+  3: i64 followingCount
+  4: i64 followerCount
+}
+struct FollowBuddyDetail {
+  1: i32 iconType
+}
+struct FollowProfile {
+  1: FollowMid followMid
+  2: string displayName
+  3: string picturePath
+  4: bool following
+  5: bool allowFollow
+  6: FollowBuddyDetail followBuddyDetail
+}
+struct FollowMid {
+  1: string mid
+  2: string eMid
+}
+struct FollowRequest {
+  1: FollowMid followMid
+}
+struct UnfollowRequest {
+  1: FollowMid followMid
+}
+
+
 struct ReissueChatTicketRequest {
   1: i32 reqSeq
   2: string groupMid

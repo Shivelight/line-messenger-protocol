@@ -348,6 +348,11 @@ enum ApplicationType {
   CLOVAFRIENDS_RC = 481
   CLOVAFRIENDS_BETA = 482
   CLOVAFRIENDS_ALPHA = 483
+  // big delta??
+  WATCHOS = 496
+  WATCHOS_RC = 497
+  WATCHOS_BETA = 498
+  WATCHOS_ALPHA = 499
 }
 
 enum ContentType {
