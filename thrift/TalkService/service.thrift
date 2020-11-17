@@ -8,6 +8,21 @@ namespace py LineThrift.talk
 namespace go LineThrift.talk
 
 service TalkService {
+
+  string decryptFollowEMid(
+    2: string eMid) throws (1: exceptionsC.TalkException e)
+
+  list<structs.NearbyEntry> updateAndGetNearby(
+    2: double latitude,
+    3: double longitude,
+    4: structsC.GeolocationAccuracy accuracy,
+    5: structsC.ClientNetworkStatus networkStatus,
+    6: double altitudeMeters,
+    7: double velocityMetersPerSecond,
+    8: double bearingDegrees) throws (1: exceptionsC.TalkException e)
+
+  void disableNearby() throws (1: exceptionsC.TalkException e)
+
   void follow(
     2: structs.FollowRequest followRequest
   ) throws (1: exceptionsC.TalkException e)
@@ -20,6 +35,8 @@ service TalkService {
     2: structs.FollowRequest getFollowersRequest
   ) throws (1: exceptionsC.TalkException e)
 
+  structsC.FriendRequestsInfo getRecentFriendRequests(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   // update
   // - getGroups
@@ -105,7 +122,13 @@ service TalkService {
   list<structsC.ChatEffectMeta> getChatEffectMetaList(
     1: set<enumsC.ChatEffectMetaCategory> categories) throws (1: exceptionsC.TalkException e)
 
+  list<structsC.Message> getPreviousMessagesV2WithRequest(
+    2: structs.GetPreviousMessagesV2Request request
+    3: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
+  structs.GetContactsV2Response getContactsV2(
+    1: structs.GetContactsV2Request request,
+    2: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
 
   //
@@ -302,13 +325,15 @@ service TalkService {
     2: bool keepLoggedIn,
     3: string systemName) throws (1: exceptionsC.TalkException e)
 
-  list<string> getBlockedContactIds() throws (1: exceptionsC.TalkException e)
+  list<string> getBlockedContactIds(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   list<string> getBlockedContactIdsByRange(
     2: i32 start,
     3: i32 count) throws (1: exceptionsC.TalkException e)
 
-  list<string> getBlockedRecommendationIds() throws (1: exceptionsC.TalkException e)
+  list<string> getBlockedRecommendationIds(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   list<string> getBuddyBlockerIds() throws (1: exceptionsC.TalkException e)
 
@@ -356,7 +381,7 @@ service TalkService {
   list<string> getFavoriteMids() throws (1: exceptionsC.TalkException e)
 
   list<structs.FriendRequest> getFriendRequests(
-    1: enums.FriendRequestDirection direction,
+    1: enumsC.FriendRequestDirection direction,
     2: i64 lastSeenSeqId) throws (1: exceptionsC.TalkException e)
 
   structsC.Group getGroup(
@@ -418,7 +443,8 @@ service TalkService {
     3: i32 messageBoxCount) throws (1: exceptionsC.TalkException e)
 
   list<structs.TMessageReadRange> getMessageReadRange(
-    2: list<string> chatIds) throws (1: exceptionsC.TalkException e)
+    2: list<string> chatIds,
+    3: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   list<structsC.Message> getMessagesBySequenceNumber(
     2: string channelId,
@@ -472,7 +498,8 @@ service TalkService {
     2: string messageBoxId,
     3: i32 messagesCount) throws (1: exceptionsC.TalkException e)
 
-  list<string> getRecommendationIds() throws (1: exceptionsC.TalkException e)
+  list<string> getRecommendationIds(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   structsC.Room getRoom(
     2: string roomId) throws (1: exceptionsC.TalkException e)
@@ -491,7 +518,7 @@ service TalkService {
     2: i32 attrBitset) throws (1: exceptionsC.TalkException e)
 
   structs.Settings getSettingsAttributes2(
-    2: set<enums.SettingsAttribute2> attrBitsetEx) throws (1: exceptionsC.TalkException e)
+    2: set<enums.SettingsAttribute2> attributesToRetrieve) throws (1: exceptionsC.TalkException e)
 
   structs.SuggestDictionaryRevisions getSuggestRevisions() throws (1: exceptionsC.TalkException e)
 
@@ -714,7 +741,7 @@ service TalkService {
     2: structsC.E2EEPublicKey publicKey) throws (1: exceptionsC.TalkException e)
 
   void removeFriendRequest(
-    1: enums.FriendRequestDirection direction,
+    1: enumsC.FriendRequestDirection direction,
     2: string midOrEMid) throws (1: exceptionsC.TalkException e)
 
   bool removeMessage(
@@ -914,7 +941,7 @@ service TalkService {
 
   void tryFriendRequest(
     1: string midOrEMid,
-    2: enums.FriendRequestMethod method,
+    2: enumsC.FriendRequestMethod method,
     3: string friendRequestParams) throws (1: exceptionsC.TalkException e)
 
   structsC.Message trySendMessage(

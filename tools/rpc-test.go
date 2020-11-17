@@ -36,7 +36,7 @@ var (
 	hdr         = map[string][]string{
 		"X-Line-Application": {"IOS\t8.2.4\tiOS\t10.2"},
 		//"X-Line-Application": {"ANDROID\t9.18.1\tAndroid OS\t6.0.1"},
-		"X-Line-Access":      {"abcjdedededd"},
+		"X-Line-Access":      {"abcde"},
 		"User-Agent":         {"LI/7.150 iPad6,3 10.2"},
 		"Accept":             {"application/x-thrift"},
 		"Content-Type":       {"application/x-thrift"},
@@ -118,6 +118,7 @@ func main() {
 	flag.StringVar(&filename, "c", "", "Template json rpc request")
 	flag.StringVar(&url, "u", "", "Full HTTP url thrift tcompact endpoint")
 	flag.StringVar(&rpc_name, "rpc", "", "Thrift RPC method call")
+	flag.StringVar(&hdr["X-Line-Access"][0], "auth", hdr["X-Line-Access"][0], "LINE Auth token")
 
 	flag.Parse()
 

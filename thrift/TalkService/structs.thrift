@@ -5,6 +5,14 @@ include "../Common/structsC.thrift"
 namespace py LineThrift.talk.structs
 namespace go LineThrift.talk.structs
 
+struct NearbyEntry {
+  1: string emid
+  2: double distance
+  3: double lastUpdatedInSec
+  4: map<string, string> property
+  5: structsC.Profile profile
+}
+
 struct GetFollowersResponse {
   1: list<FollowProfile> profiles
   2: string cursor
@@ -31,6 +39,24 @@ struct FollowRequest {
 }
 struct UnfollowRequest {
   1: FollowMid followMid
+}
+
+
+struct GetPreviousMessagesV2Request {
+  1: string messageBoxId
+  2: MessageBoxV2MessageId endMessageId
+  3: i32 messageCount
+  4: bool withReadCount
+  5: bool receivedOnly
+}
+
+struct GetContactsV2Request {
+  1: list<string> targetUserMids
+  2: set<enumsC.CalendarEventType> neededContactCalendarEvents
+}
+
+struct GetContactsV2Response {
+  1: map<string, structsC.ContactEntry> contacts
 }
 
 
@@ -213,8 +239,8 @@ struct AnalyticsInfo {
 struct FriendRequest {
   1: string eMid
   2: string mid
-  3: enums.FriendRequestDirection direction
-  4: enums.FriendRequestMethod method
+  3: enumsC.FriendRequestDirection direction
+  4: enumsC.FriendRequestMethod method
   5: string param
   6: i64 timestamp
   7: i64 seqId

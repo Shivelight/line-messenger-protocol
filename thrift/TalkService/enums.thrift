@@ -17,17 +17,6 @@ enum ChatRoomAnnouncementType {
   CHANNEL = 2
 }
 
-enum FriendRequestDirection {
-  INCOMING = 1
-  OUTGOING = 2
-}
-
-enum FriendRequestMethod {
-  TIMELINE = 1
-  NEARBY = 2
-  SQUARE = 3
-}
-
 enum NotificationType {
   APPLE_APNS = 1
   GOOGLE_C2DM = 2

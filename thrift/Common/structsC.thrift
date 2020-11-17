@@ -3,6 +3,45 @@ include "enumsC.thrift"
 namespace py LineThrift.common.structsC
 namespace go LineThrift.common.structsC
 
+struct FriendRequest {
+  1: string eMid
+  2: string mid
+  3: enumsC.FriendRequestDirection direction
+  4: enumsC.FriendRequestMethod method
+  5: string param
+  6: i64 timestamp
+  7: i64 reqSeq
+  10: string displayName
+  11: string picturepath
+  12: string pictureStatus  
+}
+struct FriendRequestsInfo {
+  1: i32 totalIncomingCount
+  2: i32 totalOutgoingCount
+  3: list<FriendRequest> recentIncomings
+  4: list<FriendRequest> recentOutgoings
+  5: i32 totalIncomingLimit
+  6: i32 totalOutgoingLimit
+}
+
+struct ContactCalendarEvent {
+  1: string id
+  2: i32 state
+  3: i32 year
+  4: i32 month
+  5: i32 day
+}
+struct ContactCalendarEvents {
+  1: map<enumsC.CalendarEventType, list<ContactCalendarEvent>> events
+}
+
+struct ContactEntry {
+  1: enumsC.UserStatusType userStatus
+  2: i64 snapshotTimeMillis
+  3: Contact contact,
+  4: ContactCalendarEvents calendarEvents
+}
+
 struct ChatRoomBGM {
   1: string creatorMid
   2: i64 createdTime
@@ -177,6 +216,9 @@ struct Location {
 struct GeolocationAccuracy {
   1: double radiusMeters
   2: double radiusConfidence
+  3: double altitudeAccuracy
+  4: double velocityAccuracy
+  5: double bearingAccuracy
 }
 
 struct Geolocation {

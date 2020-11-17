@@ -22,7 +22,7 @@
 | Channel | /CH4 | [ChannelService](thrift/ChannelService/) | Channel Service |
 | SNS Adapter | /SA4 | [SnsAdapterService](thrift/SnsAdapterService/) | [SNS]() Adapter Service |
 | SNS Adapter Registration | /api/v4p/sa | [SnsAdapterService](thrift/SnsAdapterService/) | Register using sns |
-| Auth EAP | /ACCT/authfactor/eap/v1 | AccountAuthFactorEapConnectService (not yet implemented) | _No description._ |
+| Auth EAP | /ACCT/authfactor/eap/v1 | [AccountAuthFactorEapConnectService](thrift/AccountAuthFactorEapConnectService/) | SNS Connect |
 | User Behavior Log | /L1 | _JSON, need verify_ | Logging behavior event | 
 | Age Check | /ACS4 | [AgeCheckService](thrift/AgeCheckService/) | Age sheck service |
 | Spot | /SP4 | [SpotService](thrift/SpotService/) | _No description._ |
@@ -44,13 +44,14 @@
 | Coin | /COIN4 | CoinService (not yet implemented) | LINE Coin service |
 | LIFF | /LIFF1 | [LiffService](thrift/LiffService/) | LINE Front-end Framework auth service |
 | Chat APP | /CAPP1 | [ChatappService](thrift/ChatappService/) | LINE Chat App extension service |
-| IOT | /IOT1 | ThingsService (not yet implemented) | LINE Internet of Thing service |
+| IOT | /IOT1 | [ThingsService](thrift/ThingsService/) | LINE Internet of Thing service |
 | User Provided Data | /UPD4 | [UserProvidedDataService](thrift/UserProvidedDataService/) | User data reporting service |
 | New Registration | /acct/pais/v1 | [PrimaryAccountInitService](thrift/PrimaryAccountInitService/) | Primary Account Init Service |
 | Secondary QR Login | /ACCT/lgn/sq/v1 | [SecondaryQrCodeServices](thrift/SecondaryQrCodeServices/) | Secondary device qr verification |
 | User Setting | /US4 | UserSettingsService (not yet implemented) | _No description._ |
 | LINE Spot | /ex/spot | JSON | _No description._ |
 | LINE Home V2 Services | /EXT/home/sapi/v4p/hsl | LineHomeV2Services (not yet implemented) | _No description._ |
+| LINE Home V2 Contents Recommendation | /EXT/home/sapi/v4p/flex | _Unknown_ | _No description._ |
 
 <html><small>revision: 0</small></html>
 

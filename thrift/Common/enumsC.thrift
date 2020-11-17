@@ -1,6 +1,27 @@
 namespace py LineThrift.common.enumsC
 namespace go LineThrift.common.enumsC
 
+enum FriendRequestDirection {
+  INCOMING = 1
+  OUTGOING = 2
+}
+
+enum FriendRequestMethod {
+  TIMELINE = 1
+  NEARBY = 2
+  SQUARE = 3
+}
+
+enum CalendarEventType {
+  BIRTHDAY = 0
+}
+
+enum UserStatusType {
+  NORMAL = 0
+  UNBOUND = 1
+  UNREGISTERED = 2
+}
+
 enum LocationProvider {
   GOOGLE = 0
   BAIDU = 1
