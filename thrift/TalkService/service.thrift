@@ -9,8 +9,8 @@ namespace go LineThrift.talk
 
 service TalkService {
 
-  string decryptFollowEMid(
-    2: string eMid) throws (1: exceptionsC.TalkException e)
+  structs.CreateGroupCallUrlResponse createGroupCallUrl(
+    2: structs.CreateGroupCallUrlRequest request) throws (1: exceptionsC.TalkException e)
 
   list<structs.NearbyEntry> updateAndGetNearby(
     2: double latitude,
@@ -20,13 +20,14 @@ service TalkService {
     6: double altitudeMeters,
     7: double velocityMetersPerSecond,
     8: double bearingDegrees) throws (1: exceptionsC.TalkException e)
-
   void disableNearby() throws (1: exceptionsC.TalkException e)
+
+  string decryptFollowEMid(
+    2: string eMid) throws (1: exceptionsC.TalkException e)
 
   void follow(
     2: structs.FollowRequest followRequest
   ) throws (1: exceptionsC.TalkException e)
-  
   void unfollow(
     2: structs.UnfollowRequest unfollowRequest
   ) throws (1: exceptionsC.TalkException e)
@@ -1012,6 +1013,10 @@ service TalkService {
     1: i32 reqSeq,
     2: enumsC.ProfileAttribute attr,
     3: string value) throws (1: exceptionsC.TalkException e)
+  
+  void updateProfileAttributes(
+    1: i32 reqSeq,
+    2: structs.UpdateProfileAttributesRequest request) throws (1: exceptionsC.TalkException e)
 
   void updateRegion(
     2: string region) throws (1: exceptionsC.TalkException e)

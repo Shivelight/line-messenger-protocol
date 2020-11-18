@@ -36,6 +36,7 @@
 | Auth Registration | /api/v4p/rs | [AuthService](thrift/AuthService/) | Usually used for client service init session |
 | Search | /search/v1 | SearchService (not yet implemented) | Search service DEPRECATED |
 | Search V2 | /search/v2 | SearchService (not yet implemented) | Search service V2 |
+| Search V3 | /search/v3 | _Unknown_ | Search service V3 |
 | Beacon | /BEACON4 | BeaconService (not yet implemented) | LINE Beacon Service |
 | Persona | /PS4 | PersonaService (not yet implemented) | BUDDY recommendation |
 | Square | /SQS1 | [SquareService](thrift/SquareService/) | LINE Square (now called OpenChat) |
@@ -52,8 +53,67 @@
 | LINE Spot | /ex/spot | JSON | _No description._ |
 | LINE Home V2 Services | /EXT/home/sapi/v4p/hsl | LineHomeV2Services (not yet implemented) | _No description._ |
 | LINE Home V2 Contents Recommendation | /EXT/home/sapi/v4p/flex | _Unknown_ | _No description._ |
+| Birthday Gift Association | /EXT/home/sapi/v4p/bdg | _Unknown_ | _No description._ |
+| Secondary Pwless Login Permit | /ACCT/lgn/secpwless/v1 | _Unknown_ | _No description._ |
+| Secondary Auth Factor Pincode | /ACCT/authfactor/second/pincode/v1 | _Unknown_ | _No description._ |
+| Pwless Credential Management | /ACCT/authfactor/pwless/manage/v1 | _Unknown_ | _No description._ |
+| Pwless Primary Registration | /ACCT/authfactor/pwless/v1 | _Unknown_ | _No description._ |
+| GLN Notification Status | /gln/webapi/graphql | _Unknown_ | _No description._ |
+| BOT External | /BOTE | _Unknown_ | _No description._ |
 
 <html><small>revision: 0</small></html>
+
+
+## Service Prefix
+| Endpoint Name | Path | Service | Description |
+|--|--|--|--|
+| TALK | "" | talk | ```[ X-Line-Access, x-ls, X-LS ]``` |
+| MYHOME | /mh | myhome | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| MYHOME_RENEWAL | /hm | myhome_renewal | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| TIMELINE | /tl | timeline | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| HOMEAPI | /ma | homeapi | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| TIMELINE_AUTH | /ta | timeline_auth | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| ALBUM | /ext/album | album | ```[ X-Line-ChannelToken, X-Line-Mid, X-Line-Album ]``` |
+| NOTE | /nt | note | ```[ X-Line-ChannelToken, X-Line-Mid, X-Line-Cafe, X-Line-Group ]``` |
+| GROUP_NOTE | /gn | group_note | ```[ X-Line-ChannelToken, X-Line-Cafe, X-Line-Group ]``` |
+| MUSIC | /ms | music | ```[ X-Line-Mid, X-LCT, X-MGCT ]``` |
+| OBS | /obs | obs | ```[ ]``` |
+| CDN_OBS | /cobs | cdn_obs | ```[ ]``` |
+| CDN_STICKER | /cstk | cdn_sticker | ```[ ]``` |
+| CDN_PROFILE | /cprf | cdn_profile | ```[ ]``` |
+| CDN_SHOP | /cshp | cdn_shop | ```[ ]``` |
+| SCRAP | /sc | scrap | ```[ ]``` |
+| PUBLIC_LINE_CMS | /plc | public_line_cms | ```[ X-Line-ChannelToken, X-CMSToken, X-ATCC ]``` |
+| PUBLIC_LINE_MYHOME | /plm | public_line_myhome | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| SECURITY_CENTER | /sec | security_center | ```[ ]``` |
+| CONFERENCE | /cf | conference | ```[ X-Line-ChannelToken ]``` |
+| CDN_PRIVATE | /pcdn | pcdn | ```[ ]``` |
+| AD_SHOWCASE | /ad | ad | ```[ ]``` |
+| AD_STATS | /as | as | ```[ ]``` |
+| AD_TIMELINE | /at | at | ```[ ]``` |
+| VOIP_GROUP_CALL_YOUTUBE | /EXT/groupcall/youtube-api | voip_group_call_youtube | ```[]``` |
+| VOIP_LOG | /vl | voip_log | ```[ ]``` |
+| VOIP_FACE_PLAY | /fp | face_play | ```[ ]``` |
+| OBS_API | /oa | obs_api | ```[ X-Line-Access, X-Line-ChannelToken, X-Line-Mid, X-Line-Album, x-tl-post, x-obs-host ]``` |
+| TRACKING_SDK | /tr | tracking | ```[ ]``` |
+| SEARCH | /sg | search | ```[ X-Line-Access, x-lt ]``` |
+| B612 | /b612 | b612 | ```[ X-Line-Access, x-ls, X-LS,  X-B612-Sno ]``` |
+| KEEP | /kp | keep | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| SQUARE_NOTE | /sn | square_note | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| LASS | /lass | lass | ```[ ]``` |
+| SMARTCH | /ext/smartch/ad | smartch | ```[ ]``` |
+| MY_ACTIVITY | /mx | my_activity | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| PAY | /pgw | pay | ```[ X-Line-Access, x-lt, x-lpt ]``` |
+| STORY | /st | story | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| TRANSLATE | /ds | translate | ```[ X-Line-ChannelToken ]``` |
+| SEARCH_BAR_KEYWORDS | /pss | search_bar_keywords | ```[ ]``` |
+| SOCIAL_NOTIFICATION | /eg | social_notification | ```[ ]``` |
+| SPOT | /ex/spot | spot | ```[ ]``` |
+| AVATAR | /ex/ya | avatar | ```[ X-Line-ChannelToken, X-Line-Mid ]``` |
+| GLN | /ext/gln | gln | ```[ X-LINE-AccessToken ]``` |
+
+<html><small>revision: 0</small></html>
+
 
 ```
 Endpoint Suffix/Version Description:

@@ -684,6 +684,7 @@ enum ProfileAttribute {
   ALLOW_SEARCH_BY_EMAIL = 64
   BUDDY_STATUS = 128
   MUSIC_PROFILE = 256
+  AVATAR_PROFILE = 512
 }
 
 enum OpStatus {

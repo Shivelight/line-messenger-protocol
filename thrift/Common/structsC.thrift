@@ -3,6 +3,17 @@ include "enumsC.thrift"
 namespace py LineThrift.common.structsC
 namespace go LineThrift.common.structsC
 
+struct GroupCallUrl {
+  1: string urlId
+  2: string title
+  3: i64 createdTimeMillis
+}
+
+struct ProfileContent {
+  1: string value
+  2: map<string, string> meta
+}
+
 struct FriendRequest {
   1: string eMid
   2: string mid
@@ -253,6 +264,7 @@ struct Message {
 struct AvatarProfile {
   1: string version
   2: i64 updatedMillis
+  3: string thumbnail
 }
 
 struct Contact {
@@ -446,6 +458,8 @@ struct Profile {
   33: string picturePath
   34: string musicProfile
   35: string videoProfile
+  36: map<string, string> statusMessageContentMetadata
+  37: AvatarProfile avatarProfile
 }
 
 struct PaymentReservationResult {

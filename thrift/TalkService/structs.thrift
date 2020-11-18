@@ -5,6 +5,17 @@ include "../Common/structsC.thrift"
 namespace py LineThrift.talk.structs
 namespace go LineThrift.talk.structs
 
+struct CreateGroupCallUrlRequest {
+  1: string title
+}
+struct CreateGroupCallUrlResponse {
+  1: structsC.GroupCallUrl url
+}
+
+struct UpdateProfileAttributesRequest {
+  1: map<enumsC.ProfileAttribute, structsC.ProfileContent> profileAttributes
+}
+
 struct NearbyEntry {
   1: string emid
   2: double distance
