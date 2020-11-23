@@ -399,6 +399,7 @@ enum ContentType {
   MUSIC = 19
   PAYMENT = 20
   EXTIMAGE = 21
+  FLEX = 22
 }
 
 enum BotType {
