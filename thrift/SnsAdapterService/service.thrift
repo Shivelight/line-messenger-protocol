@@ -2,6 +2,7 @@ include "structs.thrift"
 include "../Common/enumsC.thrift"
 include "../Common/exceptionsC.thrift"
 
+namespace cpp LineThrift.snsadapter
 namespace py LineThrift.snsadapter
 namespace go LineThrift.snsadapter
 

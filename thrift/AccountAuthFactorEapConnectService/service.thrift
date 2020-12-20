@@ -3,6 +3,7 @@ include "structs.thrift"
 include "../Common/structsC.thrift"
 include "../Common/exceptionsC.thrift"
 
+namespace cpp LineThrift.accountauthfactoreapconnect
 namespace py LineThrift.accountauthfactoreapconnect
 namespace go LineThrift.accountauthfactoreapconnect
 

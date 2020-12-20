@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 include "exceptions.thrift"
 
+namespace cpp LineThrift.primaryaccountinit
 namespace py LineThrift.primaryaccountinit
 namespace go LineThrift.primaryaccountinit
 

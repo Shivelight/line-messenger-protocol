@@ -1,6 +1,7 @@
 include "structs.thrift"
 include "exceptions.thrift"
 
+namespace cpp LineThrift.secondaryqrcode
 namespace py LineThrift.secondaryqrcode
 namespace go LineThrift.secondaryqrcode
 

@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 include "exceptions.thrift"
 
+namespace cpp LineThrift.universalnotification
 namespace py LineThrift.universalnotification
 namespace go LineThrift.universalnotification
 

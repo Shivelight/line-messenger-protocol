@@ -3,6 +3,7 @@ include "structs.thrift"
 include "../Common/enumsC.thrift"
 include "../Common/exceptionsC.thrift"
 
+namespace cpp LineThrift.agecheck
 namespace py LineThrift.agecheck
 namespace go LineThrift.agecheck
 

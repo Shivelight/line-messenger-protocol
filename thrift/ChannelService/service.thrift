@@ -2,6 +2,7 @@ include "enums.thrift"
 include "structs.thrift"
 include "exceptions.thrift"
 
+namespace cpp LineThrift.channel
 namespace py LineThrift.channel
 namespace go LineThrift.channel
 

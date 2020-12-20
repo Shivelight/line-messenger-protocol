@@ -1,6 +1,7 @@
 include "../Common/structsC.thrift"
 include "../Common/exceptionsC.thrift"
 
+namespace cpp LineThrift.poll
 namespace py LineThrift.poll
 namespace go LineThrift.poll
 

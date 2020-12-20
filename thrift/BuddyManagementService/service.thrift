@@ -3,6 +3,7 @@ include "../Common/enumsC.thrift"
 include "../Common/structsC.thrift"
 include "../Common/exceptionsC.thrift"
 
+namespace cpp LineThrift.buddymanagement
 namespace py LineThrift.buddymanagement
 namespace go LineThrift.buddymanagement
 

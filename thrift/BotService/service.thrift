@@ -1,6 +1,7 @@
 include "structs.thrift"
 include "../Common/exceptionsC.thrift"
 
+namespace cpp LineThrift.bot
 namespace py LineThrift.bot
 namespace go LineThrift.bot
 
