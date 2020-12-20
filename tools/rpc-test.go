@@ -29,13 +29,14 @@ type ResultTest struct {
 }
 
 var (
+	printResponseByte = false
 	testCounted = 0
 	mx          sync.Mutex
 	Dataset     = FuncTest{}
 	Resp        = ResultTest{"", "0", 0, map[string]string{}, map[string]string{}}
 	hdr         = map[string][]string{
-		"X-Line-Application": {"IOS\t8.2.4\tiOS\t10.2"},
-		//"X-Line-Application": {"ANDROID\t9.18.1\tAndroid OS\t6.0.1"},
+		//"X-Line-Application": {"IOS\t8.2.4\tiOS\t10.2"},
+		"X-Line-Application": {"ANDROID\t9.18.1\tAndroid OS\t6.0.1"},
 		"X-Line-Access":      {"abcde"},
 		"User-Agent":         {"LI/7.150 iPad6,3 10.2"},
 		"Accept":             {"application/x-thrift"},
@@ -86,17 +87,18 @@ func Requester(id int, ch chan string, done chan int) {
 		if err != nil {
 			panic(err)
 		}
-		//fmt.Printf("%#+v %#+v\n", o, data)
 		if bytes.Contains(readAll, invalidMethodName) {
 			Resp.Response[job] = "(" + o.Proto + " " + o.Status + ") " + "invalid method name"
 		} else if bytes.Contains(readAll, authenticationFailed) {
 			Resp.Response[job] = "(" + o.Proto + " " + o.Status + ") " + "authentication failed"
 		} else {
 			Resp.Response[job] = "(" + o.Proto + " " + o.Status + ") " + string(readAll)
+			fmt.Printf("%#+v\n", readAll)
 		}
 
 		if criteria(o, readAll) {
 			Resp.Qualified[job] = b.String()
+			fmt.Printf("%#+v\n", readAll)
 		}
 
 		testCounted++
@@ -115,6 +117,7 @@ func main() {
 
 		mode string = "file"
 	)
+	flag.BoolVar(&printResponseByte, "pp", false, "Print valid attempt bytes")
 	flag.StringVar(&filename, "c", "", "Template json rpc request")
 	flag.StringVar(&url, "u", "", "Full HTTP url thrift tcompact endpoint")
 	flag.StringVar(&rpc_name, "rpc", "", "Thrift RPC method call")
