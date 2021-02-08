@@ -1,30 +1,40 @@
 package main
+
 import (
+	"flag"
+	"fmt"
 	"os"
 	"os/exec"
-	"fmt"
-	"sync"
 	"path/filepath"
 	"strings"
-//	glob "github.com/gobwas/glob"
+	"sync"
+	//	glob "github.com/gobwas/glob"
 )
+
 var (
 	wg sync.WaitGroup
-//	g glob.Glob
+	//	g glob.Glob
 
-	dirPath string = "../thrift"
-	genLang string    = "go"
+	outGenDir = "../dist"
+	dirPath   = "../thrift"
+	genLang   = "go"
 
 	candidate = []string{}
+
+	lookingForFilename = []string{"service.thrift", "svc.thrift"}
 )
+
 func matcher(filename string) bool {
 	//return g.Match(filename)
 	filename = strings.ToLower(filename)
-	if strings.HasSuffix(filename, "service.thrift") || strings.HasSuffix(filename, "svc.thrift") {
-		return true
+	for _, v := range lookingForFilename {
+		if strings.HasSuffix(filename, v) {
+			return true
+		}
 	}
 	return false
 }
+
 // jalan jalan
 func walkingWalking(dir string) {
 	d, err := os.Open(dir)
@@ -51,46 +61,48 @@ func walkingWalking(dir string) {
 	}
 }
 func thriftCmd(path string) *exec.Cmd {
-	return exec.Command("thrift", "-r", "--gen", genLang, path)
+	return exec.Command("thrift", "-o", outGenDir, "-r", "--gen", genLang, path)
 }
 func main() {
-	if !(len(os.Args) >= 2) {
-		os.Args = append(os.Args, dirPath)
-	}
-	for _, arg := range os.Args[1:] {
-		if strings.HasPrefix(arg, "-h") || strings.HasPrefix(arg, "--help") {
-			fmt.Printf(`Help:
-  --gen <lang>    thrift generate language
-  -h, --help      show help
-
-thrift_builder_tool`)
-			return
-		}
-	}
-	var onWatchLang = false
-	for _, arg := range os.Args[1:] {
-		if strings.HasPrefix(arg, "--gen") {
-			if splitted := strings.Split(arg, "="); len(splitted) == 2 {
-				genLang = splitted[1]
-				break
-			}else{
-				onWatchLang = true
-				continue
+	flag.StringVar(&genLang, "gen", genLang, "thrft generate language")
+	flag.StringVar(&outGenDir, "o", outGenDir, "output location for gen-* directory")
+	flag.StringVar(&dirPath, "source-dir", dirPath, "thrift file source directory")
+	var lookFilename string
+	flag.StringVar(&lookFilename, "lookup", strings.Join(lookingForFilename, ","), "thrift service file lookup")
+	flag.Parse()
+	var clean = []string{}
+	if lookFilename != "" {
+		spl := strings.Split(lookFilename, ",")
+		for _, v := range spl {
+			v = strings.Trim(v, " ")
+			if v != "" {
+				clean = append(clean, v)
 			}
-		}else if !onWatchLang && arg != os.Args[0] {
-			dirPath = arg
-		}
-		if onWatchLang {
-			genLang = arg
 		}
 	}
+	if len(clean) > 0 {
+		lookingForFilename = clean
+	}
+
 	if len(dirPath) == 0 {
 		fmt.Println("err: dir path source cannot be empty")
 		os.Exit(2)
 	}
-//	g = glob.MustCompile("*service.thrift")
+	//	g = glob.MustCompile("*service.thrift")
 	fmt.Printf("Output language: %q\n", genLang)
 	fmt.Printf("Dir source path: %q\n", dirPath)
+	fmt.Printf("Dir output path: %q\n", outGenDir)
+
+	os.MkdirAll(outGenDir, 0644)
+	_, err := os.Stat(outGenDir)
+	if os.IsNotExist(err) {
+		fmt.Printf("err: dir out is not present. create it first.")
+		os.Exit(2)
+	} else if err != nil {
+		fmt.Printf("err: dir out error: %s\n", err)
+		os.Exit(2)
+	}
+
 	fmt.Println("Looking for [*service.thrift]...")
 	walkingWalking(dirPath)
 	fmt.Printf("total candidate: %d\n", len(candidate))
