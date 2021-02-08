@@ -18,6 +18,7 @@ struct LiffView {
 
 /**
  * Updated: 2020-02-17 (Android 10.1.1)
+ * Updated: 2021-02-08 (Android 10.11.1)
  */
 struct LiffViewResponse {
   1: LiffView view
@@ -28,6 +29,8 @@ struct LiffViewResponse {
   6: string channelId
   7: string idToken
   8: list<string> scopes
+  9: list<enums.LiffLaunchOption> launchOptions
+  10: enums.LiffPermanentLinkPattern permanentLinkPattern
 }
 
 struct LiffNoneContext {

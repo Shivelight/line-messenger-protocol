@@ -2,6 +2,21 @@ namespace py LineThrift.liff.enums
 namespace go LineThrift.liff.enums
 
 /**
+ * Updated: 2021-02-08 (Android 10.11.1)
+ */
+enum LiffPermanentLinkPattern {
+  CONCAT = 1
+  REPLACE = 2
+}
+
+/**
+ * Updated: 2021-02-08 (Android 10.11.1)
+ */
+enum LiffLaunchOption {
+  ALLOW_DIRECT_LINK = 1
+}
+
+/**
  * Updated: 2020-02-17 (Android 10.1.1)
  */
 enum LiffViewFeature {
