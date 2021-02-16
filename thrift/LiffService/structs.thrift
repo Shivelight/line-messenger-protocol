@@ -45,10 +45,14 @@ struct LiffSquareChatContext {
   1: string squareChatMid
 }
 
+/**
+ * Updated: 2021-02-16
+ *  - Optional
+ */
 struct LiffContext {
-  1: LiffNoneContext none
-  2: LiffChatContext chat
-  3: LiffSquareChatContext squareChat
+  1: optional LiffNoneContext none
+  2: optional LiffChatContext chat
+  3: optional LiffSquareChatContext squareChat
 }
 
 /**
