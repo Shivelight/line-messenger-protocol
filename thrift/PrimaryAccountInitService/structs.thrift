@@ -55,9 +55,9 @@ struct E2EEKeyBackupInfoForMigration {
 }
 
 struct GetSessionContentBeforeMigCompletionResponse {
- 1: bool appTypeDifferentFromPrevDevice
- 2: bool e2eeKeyBackupServiceConfig
- 3: E2EEKeyBackupInfoForMigration e2eeKeyBackupServiceConfig
+ 1: bool appTypeDifferentFromPrevDevice,
+ 2: bool e2eeKeyBackupServiceConfig,
+ 3: E2EEKeyBackupInfoForMigration e2eeKeyBackupInfo
 }
 
 struct GetUserProfileResponse {
@@ -77,9 +77,9 @@ struct MigratePrimaryResponse {
 }
 
 struct MigratePrimaryV2Response {
- 1: string authToken
- 2: string countryCode
- 3: string prettifiedPhoneNumber
+ 1: string authToken,
+ 2: string countryCode,
+ 3: string prettifiedPhoneNumber,
  4: string localFormatPhoneNumber
 }
 

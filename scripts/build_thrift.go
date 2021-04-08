@@ -13,7 +13,6 @@ import (
 
 var (
 	wg sync.WaitGroup
-	//	g glob.Glob
 
 	outGenDir = "../dist"
 	dirPath   = "../thrift"
