@@ -50,6 +50,16 @@ struct GetSecondAuthMethodResponse {
  1: enums.SecondAuthMethod secondAuthMethod
 }
 
+struct E2EEKeyBackupInfoForMigration {
+ 1: bool hasLastKey
+}
+
+struct GetSessionContentBeforeMigCompletionResponse {
+ 1: bool appTypeDifferentFromPrevDevice
+ 2: bool e2eeKeyBackupServiceConfig
+ 3: E2EEKeyBackupInfoForMigration e2eeKeyBackupServiceConfig
+}
+
 struct GetUserProfileResponse {
  1: UserProfile userProfile
 }
@@ -64,6 +74,13 @@ struct IssueWebAuthDetailsForSecondAuthResponse {
 
 struct MigratePrimaryResponse {
  1: string authToken
+}
+
+struct MigratePrimaryV2Response {
+ 1: string authToken
+ 2: string countryCode
+ 3: string prettifiedPhoneNumber
+ 4: string localFormatPhoneNumber
 }
 
 struct OpenSessionRequest {

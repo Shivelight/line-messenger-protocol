@@ -27,6 +27,9 @@ service PrimaryAccountInitService {
  structs.GetSecondAuthMethodResponse getSecondAuthMethod(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 
+ structs.GetSessionContentBeforeMigCompletionResponse getSessionContentBeforeMigCompletion(
+  1: string authSessionId) throws(1: exceptions.AuthException e),
+
  structs.GetUserProfileResponse getUserProfile(
   1: string authSessionId,
   2: structs.AccountIdentifier accountIdentifier) throws(1: exceptions.AuthException e),
@@ -35,13 +38,24 @@ service PrimaryAccountInitService {
   1: string authSessionId,
   2: structs.AccountIdentifier accountIdentifier) throws(1: exceptions.AuthException e),
 
+// 08/04/2021 :: LINE 11.5.2 - DISCOVERED
  structs.IssueWebAuthDetailsForSecondAuthResponse issueWebAuthDetailsForSecondAuth(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 
+// 08/04/2021 :: LINE 11.5.2 - UPDATE not exist anymore maybe deprecated?
  structs.MigratePrimaryResponse migratePrimaryUsingPhone(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 
+// 08/04/2021 :: LINE 11.5.2 - UPDATE not exist anymore maybe deprecated?
  structs.MigratePrimaryResponse migratePrimaryUsingSocialLogin(
+  1: string authSessionId) throws(1: exceptions.AuthException e),
+
+// 08/04/2021 :: LINE 11.5.2 - DISCOVERED
+ structs.MigratePrimaryV2Response migratePrimaryUsingEapAccountV2(
+  1: string authSessionId) throws(1: exceptions.AuthException e),
+
+// 08/04/2021 :: LINE 11.5.2 - DISCOVERED
+ structs.MigratePrimaryV2Response migratePrimaryUsingPhoneV2(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 
  string openSession(
