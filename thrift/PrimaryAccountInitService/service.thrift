@@ -27,6 +27,7 @@ service PrimaryAccountInitService {
  structs.GetSecondAuthMethodResponse getSecondAuthMethod(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 
+// 08/04/2021 :: LINE 11.5.2 - DISCOVERED
  structs.GetSessionContentBeforeMigCompletionResponse getSessionContentBeforeMigCompletion(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 
