@@ -1,5 +1,6 @@
 *.apk
 *.exe
+*.i64
 
 source/
 venv/

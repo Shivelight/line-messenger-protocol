@@ -14,9 +14,12 @@ import (
 var (
 	wg sync.WaitGroup
 
-	outGenDir = "../dist"
-	dirPath   = "../thrift"
-	genLang   = "go"
+	thriftBinaryLocation = "thrift"
+	outGenDir            = "../dist"
+	dirPath              = "../thrift"
+
+	// go:"package_prefix=github.com/ii64/linego/libgen/,thrift_import=github.com/ii64/linego/lib/thrift"
+	genLang = "go"
 
 	candidate = []string{}
 
@@ -60,9 +63,10 @@ func walkingWalking(dir string) {
 	}
 }
 func thriftCmd(path string) *exec.Cmd {
-	return exec.Command("thrift", "-o", outGenDir, "-r", "--gen", genLang, path)
+	return exec.Command(thriftBinaryLocation, "-o", outGenDir, "-r", "--gen", genLang, path)
 }
 func main() {
+	flag.StringVar(&thriftBinaryLocation, "bin", thriftBinaryLocation, "thrift binary location")
 	flag.StringVar(&genLang, "gen", genLang, "thrft generate language")
 	flag.StringVar(&outGenDir, "o", outGenDir, "output location for gen-* directory")
 	flag.StringVar(&dirPath, "source-dir", dirPath, "thrift file source directory")
