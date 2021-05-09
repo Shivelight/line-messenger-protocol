@@ -319,7 +319,8 @@ service TalkService {
 
   list<string> getActiveBuddySubscriberIds() throws (1: exceptionsC.TalkException e)
 
-  list<string> getAllContactIds() throws (1: exceptionsC.TalkException e)
+  list<string> getAllContactIds(
+    1: enumsC.SyncReason syncReason) throws (1: exceptionsC.TalkException e)
 
   structs.AnalyticsInfo getAnalyticsInfo() throws (1: exceptionsC.TalkException e)
 

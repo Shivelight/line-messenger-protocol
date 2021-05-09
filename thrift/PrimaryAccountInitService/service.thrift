@@ -7,6 +7,10 @@ namespace py LineThrift.primaryaccountinit
 namespace go LineThrift.primaryaccountinit
 
 service PrimaryAccountInitService {
+
+ set<string> getCountries(
+  2: enums.CountryGroup countryGroup) throws(1: exceptions.AuthException e),
+
  structs.ExchangeEncryptionKeyResponse exchangeEncryptionKey(
   1: string authSessionId,
   2: structs.ExchangeEncryptionKeyRequest request) throws(1: exceptions.AuthException e),

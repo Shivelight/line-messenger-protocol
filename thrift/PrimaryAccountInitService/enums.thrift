@@ -1,6 +1,11 @@
 namespace py LineThrift.primaryaccountinit.enums
 namespace go LineThrift.primaryaccountinit.enums
 
+enum CountryGroup {
+    UNKNOWN = 0,
+    EUROPEAN_ECONOMIC_AREA = 1
+}
+
 enum AccountIdentifierType {
  UNKNOWN = 0,
  PHONE_NUMBER = 1,
