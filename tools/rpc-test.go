@@ -3,14 +3,15 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"net/http/httputil"
 	"os"
-	"flag"
-	"strings"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 )
@@ -21,26 +22,28 @@ type FuncTest struct {
 }
 
 type ResultTest struct {
-	ApiPath    string            `json:"_endpoint"`
-	Took       string            `json:"_took"`
-	Timestamp  int64             `json:"_timestamp"`
-	Qualified  map[string]string `json:"_resp_matched_with_criteria"`
-	Response   map[string]string `json:"responses"`
+	ApiPath   string            `json:"_endpoint"`
+	Took      string            `json:"_took"`
+	Timestamp int64             `json:"_timestamp"`
+	Qualified map[string]string `json:"_resp_matched_with_criteria"`
+	Response  map[string]string `json:"responses"`
 }
 
 var (
+	debug             = false
 	printResponseByte = false
-	testCounted = 0
-	mx          sync.Mutex
-	Dataset     = FuncTest{}
-	Resp        = ResultTest{"", "0", 0, map[string]string{}, map[string]string{}}
-	hdr         = map[string][]string{
+	testCounted       = 0
+	mx                sync.Mutex
+	Dataset           = FuncTest{}
+	Resp              = ResultTest{"", "0", 0, map[string]string{}, map[string]string{}}
+	hdr               = map[string][]string{
 		//"X-Line-Application": {"IOS\t8.2.4\tiOS\t10.2"},
-		"X-Line-Application": {"ANDROID\t9.18.1\tAndroid OS\t6.0.1"},
-		"X-Line-Access":      {"abcde"},
-		"User-Agent":         {"LI/7.150 iPad6,3 10.2"},
-		"Accept":             {"application/x-thrift"},
-		"Content-Type":       {"application/x-thrift"},
+		//"X-Line-Application": {"ANDROID\t9.18.1\tAndroid OS\t6.0.1"},
+		"X-Line-Application": {"ANDROIDLITE	2.10.3	Android OS	9"},
+		"X-Line-Access": {"abcde"},
+		"User-Agent":    {"LI/7.150 iPad6,3 10.2"},
+		"Accept":        {"application/x-thrift"},
+		"Content-Type":  {"application/x-thrift"},
 	}
 	invalidMethodName    = []byte{73, 110, 118, 97, 108, 105, 100, 32, 109, 101, 116, 104, 111, 100, 32, 110, 97, 109, 101, 58}
 	authenticationFailed = []byte{65, 117, 116, 104, 101, 110, 116, 105, 99, 97, 116, 105, 111, 110, 32, 70, 97, 105, 108, 101, 100, 46}
@@ -73,6 +76,12 @@ func Requester(id int, ch chan string, done chan int) {
 		//fmt.Printf("%+#v\n",data)
 		req, _ := http.NewRequest("POST", Dataset.ApiPath, bytes.NewReader(data))
 		req.Header = hdr
+
+		if debug {
+			breq, _ := httputil.DumpRequest(req, false)
+			fmt.Printf("Request:\n%s\n=====\n", breq)
+		}
+
 		a := time.Now()
 		o, e := cl.Do(req)
 		b := time.Now().Sub(a)
@@ -112,11 +121,12 @@ func Requester(id int, ch chan string, done chan int) {
 func main() {
 	var (
 		filename string
-		url string
+		url      string
 		rpc_name string
 
 		mode string = "file"
 	)
+	flag.BoolVar(&debug, "debug", debug, "Debug mode")
 	flag.BoolVar(&printResponseByte, "pp", false, "Print valid attempt bytes")
 	flag.StringVar(&filename, "c", "", "Template json rpc request")
 	flag.StringVar(&url, "u", "", "Full HTTP url thrift tcompact endpoint")
@@ -141,7 +151,7 @@ func main() {
 		decoder.Decode(&Dataset)
 		mode = "file"
 		//fmt.Printf("%#+v\n", Dataset)
-	}else{
+	} else {
 		// check direct cli
 		if len(url) == 0 || len(rpc_name) == 0 {
 			fmt.Println("need -c or ( -u and -rpc )")
@@ -156,8 +166,6 @@ func main() {
 		}
 		Dataset.Name = names
 	}
-
-
 
 	fmt.Printf("Endpoint %s\n", Dataset.ApiPath)
 	fmt.Printf("Testing... [%d] ", len(Dataset.Name))
@@ -194,7 +202,7 @@ func main() {
 		encoder.SetIndent("", "\t")
 		encoder.Encode(Resp)
 		fmt.Printf("Saved on [%s]\n", fx)
-	}else{
+	} else {
 		// just print on terminal
 		encoder := json.NewEncoder(os.Stdout)
 		encoder.SetIndent("", "\t")
