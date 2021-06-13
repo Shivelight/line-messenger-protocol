@@ -14,7 +14,7 @@ import (
 var (
 	wg sync.WaitGroup
 
-	thriftBinaryLocation = "thrift"
+	thriftBinaryLocation = "thrift-0.13.0"
 	outGenDir            = "../dist"
 	dirPath              = "../thrift"
 

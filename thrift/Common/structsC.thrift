@@ -239,26 +239,27 @@ struct Geolocation {
 }
 
 struct Message {
-  1: string from_
-  2: string to
-  3: enumsC.MIDType toType
-  4: string id
-  5: i64 createdTime
-  6: i64 deliveredTime
-  10: string text
+  1: optional string from_
+  2: optional string to
+  3: optional enumsC.MIDType toType
+  4: optional string id
+  5: optional i64 createdTime
+  6: optional i64 deliveredTime
+  10: optional string text
   // don't write struct if it's null (sidenote from Go thrift behaviour)
   11: optional Location location
+  // (sidenote from Go thrift behavior as go don't have null value for primitive types)
   14: bool hasContent
-  15: enumsC.ContentType contentType
-  17: binary contentPreview
-  18: map<string, string> contentMetadata
-  19: i8 sessionId
-  20: list<binary> chunks
-  21: string relatedMessageId
-  22: enumsC.MessageRelationType messageRelationType
-  23: i32 readCount
-  24: enumsC.ServiceCode relatedMessageServiceCode
-  25: enumsC.AppExtensionType appExtensionType
+  15: optional enumsC.ContentType contentType
+  17: optional binary contentPreview
+  18: optional map<string, string> contentMetadata
+  19: optional i8 sessionId
+  20: optional list<binary> chunks
+  21: optional string relatedMessageId
+  22: optional enumsC.MessageRelationType messageRelationType
+  23: optional i32 readCount
+  24: optional enumsC.ServiceCode relatedMessageServiceCode
+  25: optional enumsC.AppExtensionType appExtensionType
 }
 
 struct AvatarProfile {

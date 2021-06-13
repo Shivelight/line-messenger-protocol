@@ -88,7 +88,7 @@ struct OpenSessionRequest {
 }
 
 struct SendPinCodeForPhoneResponse {
- 1: enums.VerifMethod availableMethods
+ 1: list<enums.VerifMethod> availableMethods
 }
 
 struct SimCard {
