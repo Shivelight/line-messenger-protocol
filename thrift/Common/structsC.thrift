@@ -249,7 +249,7 @@ struct Message {
   // don't write struct if it's null (sidenote from Go thrift behaviour)
   11: optional Location location
   // (sidenote from Go thrift behavior as go don't have null value for primitive types)
-  14: bool hasContent
+  14: optional bool hasContent
   15: optional enumsC.ContentType contentType
   17: optional binary contentPreview
   18: optional map<string, string> contentMetadata
