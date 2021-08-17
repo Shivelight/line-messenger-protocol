@@ -166,11 +166,29 @@ struct DeviceInfo {
   20: enumsC.ApplicationType applicationType
 }
 
+struct E2EEGroupSharedKey {
+  1: i32 version
+  2: i32 groupKeyId
+  3: string creator
+  4: i32 creatorKeyId
+  5: string receiver
+  6: i32 receiverKeyId
+  7: binary encryptedSharedKey
+  8: set<enumsC.ContentType> allowedTypes
+  9: enumsC.E2EESpecVersion specVersion
+}
+
 struct E2EEPublicKey {
   1: i32 version
   2: i32 keyId
   4: binary keyData
   5: i64 createdTime
+}
+
+struct E2EENegotiationResult {
+  1: set<enumsC.ContentType> allowedTypes
+  2: E2EEPublicKey publicKey
+  3: enumsC.E2EESpecVersion specVersion
 }
 
 struct BuddyDetail {

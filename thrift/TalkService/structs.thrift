@@ -419,11 +419,6 @@ struct WapInvitation {
   12: string roomMid
 }
 
-struct E2EENegotiationResult {
-  1: set<enumsC.ContentType> allowedTypes
-  2: structsC.E2EEPublicKey publicKey
-}
-
 struct RegisterWithPhoneNumberResult {
   1: string authToken
   2: bool recommendEmailRegistration

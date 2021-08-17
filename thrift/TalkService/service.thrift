@@ -10,6 +10,23 @@ namespace go LineThrift.talk
 
 service TalkService {
 
+  /* E2EE Group */
+  structsC.E2EEGroupSharedKey getE2EEGroupSharedKey(
+    2: i32 keyVersion,
+    3: string chatMid,
+    4: i32 groupKeyId) throws (1: exceptionsC.TalkException e)
+  
+  structsC.E2EEGroupSharedKey getLastE2EEGroupSharedKey(
+    2: i32 keyVersion,
+    3: string chatMid) throws (1: exceptionsC.TalkException e)
+
+  structsC.E2EEGroupSharedKey registerE2EEGroupKey(
+    2: i32 keyVersion,
+    3: string chatMid,
+    4: list<string> members,
+    5: list<i32> keyIds,
+    6: list<string> encryptedSharedKeys) throws (1: exceptionsC.TalkException e)
+
   structs.CreateGroupCallUrlResponse createGroupCallUrl(
     2: structs.CreateGroupCallUrlRequest request) throws (1: exceptionsC.TalkException e)
 
@@ -373,7 +390,7 @@ service TalkService {
 
   structsC.E2EEPublicKey getE2EEPublicKey(
     2: string mid,
-    3: i32 version,
+    3: i32 keyVersion,
     4: i32 keyId) throws (1: exceptionsC.TalkException e)
 
   list<structsC.E2EEPublicKey> getE2EEPublicKeys() throws (1: exceptionsC.TalkException e)
@@ -604,7 +621,7 @@ service TalkService {
   structsC.ContactTransition makeUserAddMyselfAsContact(
     1: string contactOwnerMid) throws (1: exceptionsC.TalkException e)
 
-  structs.E2EENegotiationResult negotiateE2EEPublicKey(
+  structsC.E2EENegotiationResult negotiateE2EEPublicKey(
     2: string mid) throws (1: exceptionsC.TalkException e)
 
   void noop() throws (1: exceptionsC.TalkException e)

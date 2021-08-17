@@ -1,6 +1,12 @@
 namespace py LineThrift.common.enumsC
 namespace go LineThrift.common.enumsC
 
+enum E2EESpecVersion {
+  UNKNOWN = -1
+  V1 = 1
+  V2 = 2
+}
+
 enum FriendRequestDirection {
   INCOMING = 1
   OUTGOING = 2
