@@ -5,11 +5,32 @@ include "../Common/structsC.thrift"
 namespace py LineThrift.things.structs
 namespace go LineThrift.things.structs
 
+struct NotifyDeviceDisconnectionRequest {
+	1: string deviceId (content = "DeviceId")
+	2: string connectionId (content = "ConnectionId")
+	3: i64 disconnectedTime (content = "Timestamp")
+}
+struct NotifyDeviceDisconnectionResponse {
+}
+
+struct NotifyDeviceConnectionRequest {
+	1: string deviceId (content = "DeviceId")
+	2: string connectionId (content = "ConnectionId")
+	3: enums.ConnectionType connectionType
+	4: enums.ConnectionErrorCode code // error code
+	5: string errorReason 
+	6: i64 startTime (content = "Timestamp")
+	7: i64 endTime (content = "Timestamp")
+}
+struct NotifyDeviceConnectionResponse {
+	1: i64 latestOffset
+}
+
 struct DeviceLinkRequest {
-	1: string deviceId
+	1: string deviceId (content = "DeviceId")
 }
 struct DeviceUnlinkRequest {
-	1: string deviceId
+	1: string deviceId (content = "DeviceId")
 }
 
 struct GetBleDeviceRequest {
@@ -17,7 +38,7 @@ struct GetBleDeviceRequest {
 	2: string psdi // hexDigitString
 }
 struct ThingsDevice {
-	1: string deviceId
+	1: string deviceId (content = "DeviceId")
 	2: string actionUri
 	3: string botMid
 	4: enums.ThingsProductType productType

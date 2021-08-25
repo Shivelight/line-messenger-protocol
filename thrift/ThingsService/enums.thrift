@@ -1,6 +1,15 @@
+namespace cpp LineThrift.things.enums
 namespace py LineThrift.things.enums
 namespace go LineThrift.things.enums
 
+enum ThingsErrorCode {
+	INTERNAL_SERVER_ERROR = 0
+	UNAUTHORIZED = 1
+	INVALID_REQUEST = 2
+	INVALID_STATE = 3
+	DEVICE_LIMIT_EXCEEDED = 4096
+	UNSUPPORTED_REGION = 4097
+}
 
 enum ScenarioCode {
 	SUCCESS = 0
@@ -12,7 +21,22 @@ enum ScenarioCode {
 	GATT_CONNECTION_CLOSED = 6
 }
 
+enum ConnectionType {
+	ONETIME = 0
+	AUTOMATIC = 1
+	BEACON = 2
+}
+
 enum ThingsProductType {
 	CLOUD = 1
 	BLE = 2
+}
+
+enum ConnectionErrorCode {
+	SUCCESS = 0
+	UNKNOWN_ERROR = 1
+	BLUETOOTH_NOT_AVAILABLE = 2
+	CONNECTION_TIMEOUT = 3
+	CONNECTION_ERROR = 4
+	CONNECTION_IN_PROGRESS = 5
 }
