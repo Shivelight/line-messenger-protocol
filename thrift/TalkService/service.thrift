@@ -10,6 +10,12 @@ namespace go LineThrift.talk
 
 service TalkService {
 
+  // unk notifyBannerShowing() throws(1: exceptionsC.TalkException e)
+  // unk notifyBannerTapped() throws(1: exceptionsC.TalkException e)
+  // unk queryBeaconActions() throws(1: exceptionsC.TalkException e)
+  // unk notifyBeaconDetected() throws(1: exceptionsC.TalkException e)
+
+
   /* E2EE Group */
   structsC.E2EEGroupSharedKey getE2EEGroupSharedKey(
     2: i32 keyVersion,
@@ -25,7 +31,8 @@ service TalkService {
     3: string chatMid,
     4: list<string> members,
     5: list<i32> keyIds,
-    6: list<string> encryptedSharedKeys) throws (1: exceptionsC.TalkException e)
+    6: list<binary> encryptedSharedKeys) throws (1: exceptionsC.TalkException e)
+  //
 
   structs.CreateGroupCallUrlResponse createGroupCallUrl(
     2: structs.CreateGroupCallUrlRequest request) throws (1: exceptionsC.TalkException e)
