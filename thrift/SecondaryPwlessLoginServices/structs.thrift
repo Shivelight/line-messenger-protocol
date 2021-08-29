@@ -41,7 +41,7 @@ struct AuthenticationExtensionsClientOutputs {
 
 struct AuthPublicKeyCredential {
     1: string id
-    2: stirng type (content = "PublicKeyCredantialType")
+    2: string type (content = "PublicKeyCredantialType")
     3: AuthenticatorAssertionResponse response
     4: AuthenticationExtensionsClientOutputs extensionResults
 }
