@@ -3,6 +3,57 @@ include "enums.thrift"
 namespace py LineThrift.primaryaccountinit.structs
 namespace go LineThrift.primaryaccountinit.structs
 
+struct RefreshApiRetryPolicy {
+  1: i64 initialDelayInMillis,
+  2: i64 maxDelayInMillis,
+  3: double multiplier,
+  4: double jitterRate
+}
+
+struct TokenV3IssueResult {
+  1: string accessToken,
+  2: string refreshToken,
+  3: i64 durationUntilRefreshInSec
+  4: RefreshApiRetryPolicy refreshApiRetryPolicy,
+  5: string loginSessionId,
+  6: i64 tokenIssueTimeEpochSec
+}
+
+struct MigratePrimaryWithTokenV3Response {
+  1: string authToken,
+  2: TokenV3IssueResult tokenV3IssueResult,
+  3: string countryCode,
+  4: string prettifiedFormatPhoneNumber,
+  5: string localFormatPhoneNumber,
+  6: string mid
+}
+
+struct RegisterPrimaryWithTokenV3Response {
+    1: string authToken,
+    2: TokenV3IssueResult tokenV3IssueResult,
+    3: string mid
+}
+
+struct ReqToSendPhonePinCodeRequest {
+    1: string authSessionId,
+    2: UserPhoneNumber userPhoneNumber,
+    3: enums.VerifMethodType verifMethod
+}
+
+struct ReqToSendPhonePinCodeResponse {
+    1: list<enums.VerifMethodType> availableMethods
+}
+
+struct FetchPhonePinCodeMsgRequest {
+  1: string authSessionId,
+  2: UserPhoneNumber userPhoneNumber
+}
+
+struct FetchPhonePinCodeMsgResponse {
+  1: string pinCodeMessage,
+  2: string destinationPhoneNumber
+}
+
 struct AccountIdentifier {
  1: enums.AccountIdentifierType type,
  2: string identifier,
@@ -129,6 +180,18 @@ struct VerifyPhoneResponse {
  2: bool accountExist,
  3: bool sameUdidFromAccount,
  11: UserProfile userProfile
+}
+
+struct VerifyPhonePinCodeRequest {
+    1: string authSessionId,
+    2: UserPhoneNumber userPhoneNumber,
+    3: string pinCode
+}
+
+struct VerifyPhonePinCodeResponse {
+    1: bool accountExist,
+    2: bool sameUdidFromAccount,
+    11: UserProfile userProfile
 }
 
 struct VerifySocialLoginResponse {

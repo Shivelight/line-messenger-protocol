@@ -37,6 +37,13 @@ enum VerifMethod {
  TTS = 3
 }
 
+enum VerifMethodType {
+ UNKNOWN = 0,
+ SMS = 1,
+ IVR = 2,
+ SMSPULL = 3
+}
+
 enum EncryptionKeyVersion {
  UNKNOWN = 0,
  V1 = 1
