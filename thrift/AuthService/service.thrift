@@ -9,6 +9,9 @@ namespace go LineThrift.auth
 
 service AuthService {
 
+  structsC.LoginResult loginV2(
+    2: structs.LoginRequest loginRequest) throws(1: exceptionsC.TalkException e),
+
   string confirmE2EELogin(
     1: string verifier,
     2: binary deviceSecret) throws (1: exceptionsC.TalkException e)

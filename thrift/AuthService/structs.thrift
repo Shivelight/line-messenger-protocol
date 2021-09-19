@@ -61,7 +61,7 @@ struct SecurityCenterResult {
 
 struct LoginRequest {
   1: enums.LoginType type
-  2: enumsC.IdentityProvider provider
+  2: enumsC.IdentityProvider identityProvider
   3: string identifier
   4: string password
   5: bool keepLoggedIn
@@ -71,6 +71,7 @@ struct LoginRequest {
   9: string verifier
   10: binary secret
   11: i32 e2eeVersion
+  12: string modelName
 }
 
 struct RegisterWithSnsIdResult {
