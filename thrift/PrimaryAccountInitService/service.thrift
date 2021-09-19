@@ -31,6 +31,10 @@ service PrimaryAccountInitService {
   2: structs.Device device,
   3: structs.UserPhoneNumber userPhoneNumber) throws(1: exceptions.AuthException e),
 
+ structs.GetPhoneVerifMethodV2Response getPhoneVerifMethodV2(
+   1: structs.GetPhoneVerifMethodV2Request request
+ ) throws (1: exceptions.AuthException e),
+
  structs.GetSecondAuthMethodResponse getSecondAuthMethod(
   1: string authSessionId) throws(1: exceptions.AuthException e),
 

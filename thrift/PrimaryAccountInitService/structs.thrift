@@ -1,27 +1,12 @@
 include "enums.thrift"
+include "../Common/structsC.thrift"
 
 namespace py LineThrift.primaryaccountinit.structs
 namespace go LineThrift.primaryaccountinit.structs
 
-struct RefreshApiRetryPolicy {
-  1: i64 initialDelayInMillis,
-  2: i64 maxDelayInMillis,
-  3: double multiplier,
-  4: double jitterRate
-}
-
-struct TokenV3IssueResult {
-  1: string accessToken,
-  2: string refreshToken,
-  3: i64 durationUntilRefreshInSec
-  4: RefreshApiRetryPolicy refreshApiRetryPolicy,
-  5: string loginSessionId,
-  6: i64 tokenIssueTimeEpochSec
-}
-
 struct MigratePrimaryWithTokenV3Response {
   1: string authToken,
-  2: TokenV3IssueResult tokenV3IssueResult,
+  2: structsC.TokenV3IssueResult tokenV3IssueResult,
   3: string countryCode,
   4: string prettifiedFormatPhoneNumber,
   5: string localFormatPhoneNumber,
@@ -30,7 +15,7 @@ struct MigratePrimaryWithTokenV3Response {
 
 struct RegisterPrimaryWithTokenV3Response {
     1: string authToken,
-    2: TokenV3IssueResult tokenV3IssueResult,
+    2: structsC.TokenV3IssueResult tokenV3IssueResult,
     3: string mid
 }
 
@@ -86,10 +71,22 @@ struct GetAcctVerifMethodResponse {
  2: bool sameAccountFromAuthFactor
 }
 
+
 struct GetCountryInfoResponse {
  1: string countryCode,
  2: bool countryInEEA,
  3: set<string> countrySetOfEEA
+}
+
+struct GetPhoneVerifMethodV2Request {
+  1: string authSessionId,
+  2: Device device,
+  3: UserPhoneNumber userPhoneNumber
+}
+
+struct GetPhoneVerifMethodV2Response {
+ 1: list<enums.VerifMethod> availableMethods,
+ 3: string prettifiedPhoneNumber
 }
 
 struct GetPhoneVerifMethodResponse {
