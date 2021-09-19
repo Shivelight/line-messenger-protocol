@@ -145,15 +145,33 @@ struct VerificationSessionData {
   8: string callerIdMask
 }
 
+struct RefreshApiRetryPolicy {
+  1: i64 initialDelayInMillis,
+  2: i64 maxDelayInMillis,
+  3: double multiplier,
+  4: double jitterRate
+}
+
+struct TokenV3IssueResult {
+  1: string accessToken,
+  2: string refreshToken,
+  3: i64 durationUntilRefreshInSec
+  4: RefreshApiRetryPolicy refreshApiRetryPolicy,
+  5: string loginSessionId,
+  6: i64 tokenIssueTimeEpochSec
+}
+
 struct LoginResult {
   1: string authToken
   2: string certificate
   3: string verifier
   4: string pinCode
   5: enumsC.LoginResultType type
-  6: i64 lastPrimaryBindTime
+  6: i64 lastPrimaryBindTime (content = "Timestamp")
   7: string displayMessage
   8: VerificationSessionData sessionForSMSConfirm
+  9: TokenV3IssueResult tokenV3IssueResult
+  10: string mid (content = "Mid")
 }
 
 struct DeviceInfo {
