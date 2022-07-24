@@ -162,7 +162,7 @@ func (m *mon) show(wg *sync.WaitGroup) {
 			if l <= 0 {
 				goto sw_out
 			}
-			idx := (i / (l * 50)) % l
+			idx := (i / (2000 / l)) % l
 			meta := m.m[idx]
 			if !meta.Done {
 				fmt.Fprintf(buf, "working: %s ...", meta.Path)
