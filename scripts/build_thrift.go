@@ -14,8 +14,8 @@ import (
 )
 
 var (
-	wg    sync.WaitGroup
-	debug = false
+	wg        sync.WaitGroup
+	verbosity = 0
 
 	thriftBinaryLocation = "thrift-0.13.0"
 	outGenDir            = "../dist"
@@ -65,7 +65,9 @@ func walkingWalking(dir string) {
 		}
 		if matcher(item.Name()) {
 			path := filepath.Join(dir, item.Name())
-			fmt.Printf("found: %s\n", path)
+			if verbosity > 0 {
+				fmt.Printf("found: %s\n", path)
+			}
 			candidate = append(candidate, path)
 		}
 	}
@@ -73,7 +75,7 @@ func walkingWalking(dir string) {
 
 func thriftCmd(path string) *exec.Cmd {
 	var args = []string{"-o", outGenDir, "-r", "--gen", genLang, path}
-	if debug {
+	if verbosity > 1 {
 		fmt.Printf("> %s\n", append([]string{thriftBinaryLocation}, args...))
 	}
 	return exec.Command(thriftBinaryLocation, args...)
@@ -100,6 +102,7 @@ func init() {
 	flag.StringVar(&lookFilename, "lookup", strings.Join(lookingForFilename, ","), "thrift service file lookup")
 	flag.BoolVar(&showErrors, "errors", false, "show errors at end of process")
 	flag.IntVar(&workerCount, "wrk", workerCount, "worker count")
+	flag.IntVar(&verbosity, "v", verbosity, "verbosity level")
 }
 
 func postArgParse() {
