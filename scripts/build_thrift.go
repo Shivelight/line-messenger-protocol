@@ -149,7 +149,7 @@ func (m *mon) show(wg *sync.WaitGroup) {
 		buf.Reset()
 		buf.WriteRune('\r')
 
-		buf.WriteString(fmt.Sprintf("[%d/%d] ", m.finsh, m.max))
+		fmt.Fprintf(buf, "[%d/%d] ", m.finsh, m.max)
 
 		if rEdge {
 			buf.WriteString(fmt.Sprintf("All processed."))
@@ -162,7 +162,7 @@ func (m *mon) show(wg *sync.WaitGroup) {
 			idx := (i / (l * 100)) % l
 			meta := m.m[idx]
 			if !meta.Done {
-				buf.WriteString(fmt.Sprintf("working: %s ...", meta.Path))
+				fmt.Fprintf(buf, "working: %s ...", meta.Path)
 			} else {
 				m.m = append(m.m[:idx], m.m[idx+1:]...)
 				goto sw_start
