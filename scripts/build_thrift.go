@@ -159,7 +159,7 @@ func (m *mon) show(wg *sync.WaitGroup) {
 			if l <= 0 {
 				goto sw_out
 			}
-			idx := (i / (l * 100)) % l
+			idx := (i / (l * 50)) % l
 			meta := m.m[idx]
 			if !meta.Done {
 				fmt.Fprintf(buf, "working: %s ...", meta.Path)
@@ -274,7 +274,11 @@ func main() {
 				res = append(res, meta)
 			}
 		}
-		qpath := make(chan string, 1)
+		bufSz := (((len(candidate) - 1) >> 3) + 1) << 3
+		if bufSz > 512 {
+			bufSz = 512
+		}
+		qpath := make(chan string, bufSz)
 		for i := 0; i < workerCount; i++ {
 			go worker(i, qpath, m, start, done)
 		}
